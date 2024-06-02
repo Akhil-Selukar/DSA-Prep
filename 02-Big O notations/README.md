@@ -126,3 +126,50 @@ Here we are considering input array will always have at least one value.
 If we plot O(1) time complexity on graph of size of input vs time, the graph will be a parallel line to X-axis. (refer below graph) 
 
 ![O(1) complexity(02-Big O notations/images/O(1) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(1)%20complexity.png)
+
+2. O(N) - O(N) (i.e. Big O of N) also called as linear time complexity. It says that the time to execute the code (or number of 
+operations) is directly proportional to the number of inputs/Size of input. Consider an example where you want to print all
+element of a given array of size N. You will be looping over the array and printing all the elements inside the loop. In
+this case if the array has 10 elements in it, then it will have to loop 10 times and time required to complete the operation
+will be 10 time the time required for 1 iteration of the loop. If the number of elements increases to 100 the number of 
+iterations will also increase to 100 and so as the time to complete the operation. So here we can clearly see that the 
+number of operations or the time to execute the code is directly proportional to the size fo the array of number of elements 
+in the array. Have a look at below code.
+
+```java
+public int printArrayElement(int[] arr){
+    for(int i=0; i<arr.length; i++){
+        System.out.println(arr[i]);
+    }
+}
+```
+Here we are considering input array will always have at least one value.
+
+If we plot this complexity on a graph, it will be a straight line like below.
+
+![O(N) Complexity graph(02-Big O notations/images/O(N) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(N)%20complexity.png)
+
+
+>Now here one thing we must understand is in case of any multiplying factor, we drop that multiplying factor while doing 
+> asymptotic analysis. Have a look at below code.
+> ```java
+> public int printArrayElement(int[] arr){
+>    for(int i=0; i<arr.length; i++){
+>        System.out.println(arr[i]);
+>   }
+>    for(int j=0; j<arr.length; j++){
+>        System.out.println(arr[j]);
+>   }
+> }
+> ```
+> Here in above example we are iterating over the loop two times and printing the array element two times. So the total
+> number of iterations will be N for first loop and another N for second loop. Hence the overall time taken will be N+N i.e. 
+> 2N. Hence in terms of asymptotic notations it will be O(2N).
+> 
+> But while doing asymptotic analysis we can safely drop the constant factor (i.e. 22 in this case). This is because 
+> Big O notation is concerned with the asymptotic growth rate of an algorithm, meaning how the execution time scales as 
+> the input size increases towards infinity. So in case of very large value of N the value for N and 2N will be any way very 
+> larger than any small value of N. Also the overall value of number of operations/time is controlled by N (as N can vary from 
+> 1 to infinitely large number) whereas constant factor 2 is a non-dominant term. Hence we can safely drop the constant 
+> factor and say that the time complexity for above code is also O(N). 
+
