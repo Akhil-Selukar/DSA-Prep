@@ -173,3 +173,23 @@ If we plot this complexity on a graph, it will be a straight line like below.
 > 1 to infinitely large number) whereas constant factor 2 is a non-dominant term. Hence we can safely drop the constant 
 > factor and say that the time complexity for above code is also O(N). 
 
+3. O(N<sup>2</sup>) - also called as quadratic complexity. It says that the number of operations or time to execute the code
+increases exponentially as number of input increases. For example have a look at below code.
+
+```java
+public int printNumbers(int n){
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            System.out.println(i+" "+j);
+        }
+    }
+}
+```
+Here in above code if we pass n as 10 then the code will print numbers from 00 to 99 (i.e. total of 100 numbers). If we 
+pass n as 100 then it will print numbers from 00 to 9999 which means total of 10000 numbers. So the number of iterations 
+are n<sup>2</sup> times. Hence we say that the complexity for this loop is O(N<sup>2</sup>). If we add another loop inside 
+loop of j, then the complexity will become O(N<sup>3</sup>) and so on. 
+
+If we plot this complexity on the graph. Then it will be like below.
+
+![Quadratic complexity(02-Big O notations/images/O(N^2) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(N%5E2)%20complexity.png)
