@@ -58,7 +58,7 @@ If you plot the time taken Vs number of files to send on a graph for both the al
 And O(N) or O(1), etc. are the way of showing how the runtime of a function/algorithm increases with 
 respect to the number of inputs. It is also called as Time complexity** 
 
-### Big O notations
+### Big O notations (Asymptotic notations)
 
 Consider second algorithm in above example where we are driving 100 miles to share the photos and videos with friend. In 
 this case the time required to solve the problem in hand (i.e. delivering photos and videos) does not depend on the amount 
@@ -104,3 +104,25 @@ case, and it is represented by Big $$\Theta$$ (i.e. Big theta). In our array exa
 (In general if not specifically asked for best of average case we always report worst case complexity (i.e. Big O). While
 if you want to compare two algorithms you can use average case scenario as well.)
 
+### Common time complexities 
+
+Now we know about time complexity and how size of input affect the runtime of any algorithm. So let's understand some very 
+common runtime complexities. 
+
+1. O(1) - O(1) (i.e. Big O of 1) also call as constant time complexity. It represents that no matter what is the input size 
+is, the time required for to run the code will be constant every time. 
+For example, consider you are required to return the first element of given array. So in this case no matter how large the 
+array is, every time you will be returning first element only i.e. element at index 0 (have a look at below code). So you will not have to loop over 
+the array at any case. Hence irrespective of how many elements are there in the array the time required to fetch and return 
+first element will always be constant. This is called as constant time complexity or O(1).
+
+```java
+public int getFirstElement(int[] arr){
+    return arr[0];
+}
+```
+Here we are considering input array will always have at least one value.
+
+If we plot O(1) time complexity on graph of size of input vs time, the graph will be a parallel line to X-axis. (refer below graph) 
+
+![O(1) complexity(02-Big O notations/images/O(1) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(1)%20complexity.png)
