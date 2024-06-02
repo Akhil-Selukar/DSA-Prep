@@ -71,8 +71,8 @@ there will be three scenarios.
 
 So there will be one best scenario, one worst scenario and one average scenario. All this three scenarios are represented 
 by using different big O notations.
-1. Big $$\Omega$$ (i.e. Big Omega) means the best case scenario.
-2. Big $$\Theta$$ (i.e. Big theta) means the average case scenario.
+1. Big $\mathsf{k\Omega}$ (i.e. Big Omega) means the best case scenario.
+2. Big $\mathsf{k\Theta}$ (i.e. Big theta) means the average case scenario.
 3. Big O (i.e. Big O or Big Omicron) means the worst case scenario.
 
 Now let's take an actual computer science example to understand this better.<br>
@@ -93,12 +93,12 @@ Hence in worst case scenario the time complexity will be directly proportional t
 Second thing that can happen is we can luckily find the given number in first iteration only, because the number which we 
 want to find is present at the start of given array. For example in above example if we want to find number 5. In that case
 we will have to loop over the array only once. So this is the best case scenario, here even if our algorithm is to loop over
-all elements, but we found the element in 1 iteration of loop only. This best case scenario is represented by Big $$\Omega$$ 
+all elements, but we found the element in 1 iteration of loop only. This best case scenario is represented by Big $\mathsf{k\Omega}$ 
 (i.e. Big Omega). 
 
 Now the third scenario is, number which we want to find is neither at first place nor at the end. In this case the number 
 of iteration of loop will be more than the best case scenario but less than the worst case scenario. This is the average 
-case, and it is represented by Big $$\Theta$$ (i.e. Big theta). In our array example let's say we want to find index of number 
+case, and it is represented by Big $\mathsf{k\Theta}$ (i.e. Big theta). In our array example let's say we want to find index of number 
 8, in that case it the number of iterations which will be required are 4, which is more than best case but less than worst case.
 
 (In general if not specifically asked for best of average case we always report worst case complexity (i.e. Big O). While
