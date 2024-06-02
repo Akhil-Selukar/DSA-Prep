@@ -193,3 +193,26 @@ loop of j, then the complexity will become O(N<sup>3</sup>) and so on.
 If we plot this complexity on the graph. Then it will be like below.
 
 ![Quadratic complexity(02-Big O notations/images/O(N^2) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(N%5E2)%20complexity.png)
+
+> Have a look at below code and try to identify the number of operations which will be performed while running the code.
+> ```java
+> public int printNumbers(int n){
+>    for(int i=0; i<n; i++){
+>        for(int j=0; j<n; j++){
+>            System.out.println(i+" "+j);
+>        }
+>    }
+>    for(int k=0; k<n; k++){
+>        System.out.println(k);
+>    }
+> }
+> ```
+> In above code example if we pass n as 10 then first it will print values from 00 to 99 and then the loop of k will print 
+> the values from 0 to 9. So the total number of operations/iterations will be 100 + 10 i.e. 110. In terms of complexity if
+> we write the time complexity for above code then it will be O(N<sup>2</sup>) for the first part and O(N) for the second,
+> so the overall time complexity will be O(N<sup>2</sup> + N).
+> 
+> Now if you increase the value of N to 100 the total number of iterations will be 10100, where the contribution of second
+> loop (loop of k) O(N) is just 100 which is much less than the contribution of i and J loop i.s. O(N<sup>2</sup>). So here 
+> N is non-dominant term of O(N<sup>2</sup> + N). Hence we can safely drop N and say that the overall complexity for above 
+> code is O(N<sup>2</sup>).  
