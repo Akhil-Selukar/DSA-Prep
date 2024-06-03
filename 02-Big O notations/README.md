@@ -216,3 +216,80 @@ If we plot this complexity on the graph. Then it will be like below.
 > loop (loop of k) O(N) is just 100 which is much less than the contribution of i and J loop i.s. O(N<sup>2</sup>). So here 
 > N is non-dominant term of O(N<sup>2</sup> + N). Hence we can safely drop N and say that the overall complexity for above 
 > code is O(N<sup>2</sup>).  
+
+
+4. O(logN) - Also called as logarithmic complexity, says that the number of operations or time to execute the code increases 
+logarithmically as number of input increases. To understand this better consider below example.
+
+Consider you have a sorted array of size 8, and you are given with a number. Your task here is to find if given number is 
+present in the array or not.
+
+So here the algorithm we can use is to loop over the array elements one by one and compare it with given element. But here
+an important thing to notice is that the array is sorted, so we can use this additional detail for our advantage. We can use
+divide and conquer algorithm here.(we will study this in details further)
+
+As we know that the array is sorted, so we can divide the array in two parts from middle. Then we can check if the last
+element of first half of the array is greater than or equal to the given number or not. If yes then we can completely 
+ignore the second half of the array as the array was sorted and last element of first half id greater than or equal to given
+number means if given number exists in the array then it must be in this half only. Again we can repeat this process till 
+we find the element or the array is divided into individual numbers. 
+
+Let's see this example diagrammatically with actual numbers and count the number of maximum iterations that can require 
+to find element in an array of 8 elements.
+
+Consider you are given with below sorted array, and you are asked to check if 4 is present in the given array or not.
+![O(logN) example image - 1 (02-Big O notations/images/O(logN)-1.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)-1.png)
+
+Now let's use above algorithm here (Divide and conquer).
+
+Step 1 will be to divide the array in two parts and check in which part the given number can be present.
+So as shown in below figure we divided array into two parts each containing 4 elements. And if you check now the last element of 
+first part i.e. 6 is greater than 4 (i.e. number you are looking for) so you can straightaway ignore second half of the array.
+
+![O(logN) example image - 2 (02-Big O notations/images/O(logN)-2.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)-2.png)
+
+From above image you can see that in just 1 iteration we have eliminated 4 numbers and new search array is of only four elements.
+
+Now let's see second iteration. In this iteration we again divide the search array into two parts and repeat the same process. 
+
+![O(logN) example image - 3 (02-Big O notations/images/O(logN)-3.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)-3.png)
+
+From above screenshot you can see that in second iteration we eliminated two elements and now the remaining elements are only 
+two.
+
+In third iteration as well let's divide the remaining element and repeat the same process.
+
+![O(logN) example image - 4 (02-Big O notations/images/O(logN)-4.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)-4.png)
+
+Here at the end of 3rd iteration you will reach at the point where the array can not be split further.
+Here in this example the number 4 is found at the end of 3rd iteration. 
+
+So overall if you observe instead of looping over all the array elements one by one and comparing the element with given 
+number (Where the max iterations required will be 8). Here in this case we only required 3 iterations.
+
+Now if you notice and apply some maths here, you will observe for any N (i.e. length of array). The number of iterations in 
+divide and conquer can be calculated by using below formula.
+
+> 2<sup> i</sup> = N
+> 
+> where, <br>
+> i = number of iterations<br>
+> N = length of array (Size of input)
+> 
+> We have used 2 here because we are splitting the array into two parts.
+
+Now if you re-write this as to calculate value of i instead of N. Then it will be.
+
+> i = log<sub> 2 </sub>N
+> 
+> where, <br>
+> i = number of iterations<br>
+> N = length of array (Size of input)
+
+Hence, for increase in input N the number of iterations increases in logarithmic order. So you can say that the time complexity
+for this example if O(logN).
+
+If you plot this complexity in graph then you will get a line similar to that of O(1) but slightly slanted and above it.
+(refer below graph)
+
+![O(logN) complexity graph (02-Big O notations/images/O(logN) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)%20complexity.png)
