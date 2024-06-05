@@ -293,3 +293,64 @@ If you plot this complexity in graph then you will get a line similar to that of
 (refer below graph)
 
 ![O(logN) complexity graph (02-Big O notations/images/O(logN) complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/O(logN)%20complexity.png)
+
+> In general, constant or logarithmic are considered to be the best time complexity and exponential/Quadratic is considered to 
+> be the worst time complexity for any algorithm.
+
+### Adding and multiplying time complexities.
+
+In one of the earlier section we saw that in case of below example we can drop the constant while reporting the time complexity.
+
+```java
+public int printArrayElement(int[] arr){
+   for(int i=0; i<arr.length; i++){
+       System.out.println(arr[i]);
+  }
+   for(int j=0; j<arr.length; j++){
+       System.out.println(arr[j]);
+  }
+}
+```
+
+Here we can drop the constant because constant was non-dominant term. We know for sure that for any inout both the loops 
+will execute same number of time. So whatever is the effect of increase in size of input, it will be same on both the loops.
+But now let's look at below example.
+
+```java
+public int printArrayElement(int limit1, int limit2){
+   for(int i=0; i<limit1; i++){
+       System.out.println(i);
+  }
+   for(int j=0; j<limit2; j++){
+       System.out.println(j);
+  }
+}
+```
+
+In this example it is not necessary that limit1 and limit2 will always be equal. Hence number of iterations of first loop 
+and number of iterations of second loop will be different. (At some cases there might be no iteration for one loop and 
+a huge number of iteration of another loop). So we can't say that complexity here only depend on one input. It indeed depend
+upon both the inputs. Now here both the inputs are independent and will run one after another. So if the time complexity for 
+first loop is O(limit1) (i.e. directly proportional to the size of first input) and time complexity for second loop is 
+O(limit2) (i.e. directly proportional to second input). So the overall complexity will be addition of both. i.e. 
+O(limit1) + O(Limit2). Let's say size of inputs are N and M then O(N)+O(M). So the overall complexity will be 
+O(N+M) (i.e. addition). Here we can not drop any term as both terms are independent.
+
+Similarly, if the loops are interdependent but limits are different like in below example.
+
+```java
+public int printNumbers(int m, int n){
+    for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+            System.out.println(i+" "+j);
+        }
+    }
+ }
+```
+
+Here we are looping over the loop of j for every value of i. Now here as well m and n are totally independent, and it is 
+possible that one can be small but other can be really huge and create significant impact on time complexity. Hence here 
+as well we cannot drop any term. In this case the complexity will be O(NM) (i.e. multiplication). 
+
+> To remember this in simple way, whenever the scenario is like do this **and after you finish** do that, the complexity 
+> will be added. And if the scenario is like do this **for every** that, then complexity will be multiplied. 
