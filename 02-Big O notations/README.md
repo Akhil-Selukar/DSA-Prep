@@ -354,3 +354,52 @@ as well we cannot drop any term. In this case the complexity will be O(NM) (i.e.
 
 > To remember this in simple way, whenever the scenario is like do this **and after you finish** do that, the complexity 
 > will be added. And if the scenario is like do this **for every** that, then complexity will be multiplied. 
+
+### Space complexity
+
+Till now, we learnt that to decide the efficiency of an algorithm we can use time complexity which is nothing but in the 
+worst scenario as size of input increases then what will be the impact of it on time of execution. But time complexity is 
+not the only deciding factor. Consider your code is executing in 1 sec every time, but it requires 50Mb of memory space.
+In large scale applications this much amount of memory for just a single call is not atoll accepted, so the algorithm will 
+not be considered as the efficient algorithm.
+
+This analysis of impact on memory consumption by the algorithm as the size of input increases is called as space complexity. 
+For example consider below method for addition of two numbers.
+
+```java
+public int addNumbers(int num1, int num2){
+    return num1 + num2;
+}
+```
+
+In this case no matter you pass 1 and 2 as num1 and num2 or 100000 and 99999. The memory required for this code to execute 
+will not be affected. Hence the complexity in terms of memory space i.e. space complexity for above code is O(1) i.e. constant
+
+Whereas consider below code.
+
+```java
+public long calculateFactorial(int n){
+    if(n <= 1){
+        return 1;
+    }
+    return n * calculateFactorial(n-1);
+}
+```
+
+Here if we call calculatefactorial() method with n = 3. Then it will call itself with value 2 (i.e. 3-1) and that call will 
+again call the same method with value of n as 1 (i.e. 2-1). This method calling itself is called as recursion (we will see
+this in detail further). This recursion will continue till value of n become 1. And meanwhile all the calls to calculateFactorial()
+method for all other values are stored in memory. 
+
+So in case of N=3,<br>
+First actual call will be calculateFactorial(3)<br>
+This call will be stored in memory and another call will be triggered i.e. calculateFactorial(2)<br>
+Now this call will also be stored in memory and another call will be triggered i.e. calculatefactorial(1)<br>
+Now this call will return 1. which will then resume the call of calculateFactorial(2) and multiply that 1 with 2 and generate
+2 as a result.<br>
+This 2 is then transferred to resume the call calculateFactorial(3), here that 2 will be multiplied with 3 to generate result as 6.<br>
+And finally the 6 will be returned.
+
+SO here for N=3, total of three calls was made and stored in the memory. Consider for N=1000, there will be 1000 such calls
+stored in memory. And it will consume memory 1000 times. So here memory utilization is getting increased in direct proportion 
+with size of input hence here the space complexity is O(N).
