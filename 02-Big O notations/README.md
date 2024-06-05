@@ -400,6 +400,46 @@ Now this call will return 1. which will then resume the call of calculateFactori
 This 2 is then transferred to resume the call calculateFactorial(3), here that 2 will be multiplied with 3 to generate result as 6.<br>
 And finally the 6 will be returned.
 
-SO here for N=3, total of three calls was made and stored in the memory. Consider for N=1000, there will be 1000 such calls
+So here for N=3, total of three calls was made and stored in the memory. Consider for N=1000, there will be 1000 such calls
 stored in memory. And it will consume memory 1000 times. So here memory utilization is getting increased in direct proportion 
 with size of input hence here the space complexity is O(N).
+
+### How to calculate complexity of any algorithm in terms of BigO?
+To calculate the time complexity of any piece of code we can use below rules.
+
+1. Any assignment statement and if statement which is being executed only once will have O(1) complexity.
+2. A simple for loop (with no internal loops) will have O(N) complexity.
+3. A nested loop where controlling parameter is same will have O(N<sup>2</sup>) complexity.
+4. A loop where we are dividing the controlling term by 2 in each iteration will have O(log N) complexity.
+5. The overall complexity of code will be the addition of all individual complexities (dropping the non-dominant complexities.)
+
+For example have a look at below code.
+
+```java
+public void checkAddition(int n){
+    int sum = 0;
+    for(int i=0; i<=n;i++){
+        sum += i;
+    }
+    if(sum>100){
+        System.out.println("This was the number you are looking for!");    
+    } else {
+        System.out.println("The number is very small.");    
+    }
+}
+```
+
+Here, first statement is simple assignment statement i.e. `int sum = 0;` so it will have O(1) time complexity.<br>
+Then we have a for loop which contains again a simple addition and assignment so no nested loops, hence the time complexity 
+will be O(N) here.<br>
+Then we have a if statement which will have time complexity of O(1), Then couple of print statement which again have complexity of O(1).
+
+![Calculating the time complexity(02-Big O notations/images/calculation of space complexity.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/02-Big%20O%20notations/images/calculation%20of%20space%20complexity.png)
+
+So the overall time complexity of the code will be<br>
+
+O(1) + O(N) + O(1) + O(1) + O(1) + O(1) + O(1)<br>
+
+Now if we remove the non-dominant time complexities, then the final time complexity will be O(N).
+
+Hence, the time complexity of above algorithm/code is O(N).
