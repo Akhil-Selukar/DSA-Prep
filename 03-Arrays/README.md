@@ -39,3 +39,37 @@ the code clean.
 
 > Important note - Array can have duplicate values.
 
+### Types of array.
+
+Arrays are of two types, single dimensional array and multidimensional array. In multidimensional array we have 2D array,
+jagged array, etc.
+
+Now a single dimensional array or (1D array) is the simplest form of array with only one row and multiple columns.
+The element stored in a one dimensional array have only one index value (i.e. colum value) , while two-dimensional array 
+is just like a matrix which has multiple row and multiple columns hence multidimensional array has two indices. Below are 
+example of one dimensional and two-dimensional array.
+
+![One dimensional array(03-Arrays/images/one-dimensional-array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/one-dimensional-array.png)
+
+Here we have only one row and total of 8 columns.<br>
+The index of  4 is 2, index of 7 is 4, index of 10 is 6. So all element have only single index.
+
+On the other hand have a look at below 2D-array.
+
+![Two dimensional array(03-Arrays/images/two-dimensional-array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/two-dimensional-array.png)
+
+Here we have three rows and four columns.<br>
+The index of any element in 2D array is always represented as row number first and then column number. Hence the index of 
+4 is (0,2), the index of 7 is (1,0) and the index of 15 is (2,3)<br>
+So when we want to access 4 we will look into first row and third column. Similarly, if we want to access 15 we will look 
+into third row and fourth column. 
+
+Now Three-dimensional array has depth along with row and column. Consider 3D array as a cube. 
+
+![Three dimensional array(03-Arrays/images/three-dimensional-array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/three-dimensional-array.png)
+
+Here we can see the cube has depth (indicated by i and green color), rows (indicated by j and red color) and columns 
+(indicated by k and cyan color). The index of any element in a three-dimensional array is represented as (i,j,k) i.e.
+depth value then row value and then column value. So if we want to write index of 17 in above figure, then it will be 
+(0,1,1) because 17 is at 0th level depth, 1st row and 1st column. Whereas if we want to write the index of 19, then it 
+will be (1,0,2) because it is at 1st depth, 0th row and 2nd column.  
