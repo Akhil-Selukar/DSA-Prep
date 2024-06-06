@@ -54,6 +54,9 @@ example of one dimensional and two-dimensional array.
 Here we have only one row and total of 8 columns.<br>
 The index of  4 is 2, index of 7 is 4, index of 10 is 6. So all element have only single index.
 
+> Remember that counting of index start from 0 and not from 1, hence 5th column means 4th index. (same is applicable for 
+> row index and depth index in case of multidimensional array.)
+
 On the other hand have a look at below 2D-array.
 
 ![Two dimensional array(03-Arrays/images/two-dimensional-array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/two-dimensional-array.png)
@@ -73,3 +76,39 @@ Here we can see the cube has depth (indicated by i and green color), rows (indic
 depth value then row value and then column value. So if we want to write index of 17 in above figure, then it will be 
 (0,1,1) because 17 is at 0th level depth, 1st row and 1st column. Whereas if we want to write the index of 19, then it 
 will be (1,0,2) because it is at 1st depth, 0th row and 2nd column.  
+
+Now we have seen different types of array, but it is very important to understand how these arrays are stored in the 
+memory, because at the start of this section we mentioned that `All array elements are placed in continuous memory locations.`
+So in case of 1D array it is simple and clear that all the elements will be stored in continuous memory locations like below.
+
+Consider we want to store a 1D array with 5 values [2,9,4,6,3].
+(Consider each sell in below diagram represent a memory location) 
+
+![1D-array-in-memory(03-Arrays/images/1D-array-in-memory.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/1D-array-in-memory.png)
+
+As shown in above diagram (highlighted in green), the elements will be stored in continuous memory locations. And never 
+like as shown in cells highlighted in red.
+
+Now how about 2D-arrays. Well, 2D-array is stored in memory as a single 1D array only. It will store the entire first row,
+then it will store entire second row just next to the first row and then third row and so on. Have a look at below diagram 
+where the 2D array is stored in memory.
+
+The array to store: <br>
+[[ 4, 6, 9],<br>
+ [ 8, 3, 5],<br>
+ [ 7, 2, 1]]
+
+The above array will be stored in memory as shown below.
+
+![2D-array-in-memory(03-Arrays/images/2D-array-in-memory.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/2D-array-in-memory.png)
+
+Here we can see that the memory location m35 to m37 represents the first row of given 2D array. Then immediately after that
+from memory location m38 to m40 represent the second row and from memory location m41 to m43 we have 3rd row of the 2D array.
+So in memory the 2D array is stored just like a normal 1D array with each row in 2D array placed immediately after the 
+previous row.
+
+2D array will never be stored like below in memory.
+
+![2d-array-in-memory-incorrect(03-Arrays/images/2D-array-in-memory-incorrect.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/2D-array-in-memory-incorrect.png)
+
+In case of 3D array, it will also be represented as multiple 2D arrays one after the other.
