@@ -164,3 +164,28 @@ Value inserted successfully.
 First element in the array is 10
 Fourth element in the array is 40
 ```
+
+### 3. Traversal of array elements - 
+Traversing an array means looping through all the elements of an array. So no doubt we will have to use a loop for this 
+operation. Below code shows how we can traverse through an array. 
+
+```java
+package org.akhil;
+
+public class Main {
+    public static void main(String[] args) {
+        int arr[] = {4,6,7,8,2};
+
+        for(int i=0; i< arr.length; i++){
+            System.out.println("Element at index "+i+" is "+arr[i]);
+        }
+    }
+}
+```
+
+Here we have created an array with 5 elements and using a for loop we are traversing through the array to print all the 
+elements.
+
+If we analyse the code for time and space complexity, then to traverse an array we need to loop over it, so the number of 
+iterations will directly be affected by size of given array. So time complexity will be O(N) while to traverse over an 
+array we don't need any additional memory hence the space complexity will be O(1).
