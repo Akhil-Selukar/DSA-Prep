@@ -251,3 +251,78 @@ all the elements. We already know that the time complexity for such code is O(N)
 size of array increases. And for this searching we do not need any additional memory hence the space complexity will be 
 O(1).
 
+### 5. Deleting an element in given array.
+Now technically we can't make any cell/index of an array as empty. Even when we create an array, before assigning values
+to it, the default values are 0 (in case of integer array). But normally in industry it is a common practice to use 
+Integer.MIN_VALUE as default value as we might consider 0 as actual element in some cases.
+So basically deleting any element from array is nothing but setting the element to Integer.MIN_VALUE. Below is the code 
+for this operation.
+
+(Note: here we are considering that we have index of element to delete, there can be some scenario where you will have the 
+value and not the index. So in that case you will have to loop over array to find the index and delete it. The complexity 
+will be different in that case.)
+
+SingleDimensionalArray.java
+```java
+package org.akhil;
+
+public class SingleDimensionalArray {
+    int[] arr = null;
+
+    public SingleDimensionalArray(int sizeOfArray) {
+        this.arr = new int[sizeOfArray];
+
+        for(int i=0;i<arr.length; i++){
+            this.arr[i] = (i+1)*10;
+        }
+    }
+
+    // Delete element at specific index.
+    public void deleteElementOfAnArray(int index){
+        try{
+            this.arr[index] = Integer.MIN_VALUE;
+            System.out.println("Element deleted successfully!");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array index is not present.!!");
+        }
+    }
+}
+```
+
+Here in above code in constructor we are accepting the parameter sizeOfArray and creating an integer array of that size. 
+Also, we are adding 10,20,30... values based on index in the array. So constructor is creating an array with values for us.
+We have another method 'deleteElementOfAnArray' which accepts the index from where we want the element to be deleted. 
+Then based on that index we are accessing the array value and changing it to the default integer minimum value.
+If array index is not present then we are printing the string 'Array index is not present.!!'.  
+
+To test this code we are calling above method from Main.java class.
+
+Main.java
+```java
+package org.akhil;
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        SingleDimensionalArray sda = new SingleDimensionalArray(5);
+
+        System.out.println("Array before deleting any element "+Arrays.toString(sda.arr));
+
+        sda.deleteElementOfAnArray(3);
+
+        System.out.println("Array after deleting 3rd element "+Arrays.toString(sda.arr));
+    }
+}
+```
+
+The output of above code will be.
+
+```markdown
+Array before deleting any element [10, 20, 30, 40, 50]
+Element deleted successfully!
+Array after deleting 3rd element [10, 20, 30, -2147483648, 50]
+```
+
+From above output we can see that the value at index 3 i.e. the 4th value is deleted successfully (i.e. modified to integer 
+minimum value). The time and space complexity for above code is O(1). As we are not looping or using any additional space.
