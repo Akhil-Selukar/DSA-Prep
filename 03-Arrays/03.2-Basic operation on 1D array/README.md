@@ -189,3 +189,65 @@ elements.
 If we analyse the code for time and space complexity, then to traverse an array we need to loop over it, so the number of 
 iterations will directly be affected by size of given array. So time complexity will be O(N) while to traverse over an 
 array we don't need any additional memory hence the space complexity will be O(1).
+
+
+### 4. Searching given element in an array
+Here the task is to search given element is present in an array or not, if the element is present then we have to display 
+message 'Element found at index {index}' and if the element is not present then it should display the message 'Array 
+element does not exist'. To perform this task there can be many ways like sort the array first and then use divide and 
+conquer, or any other algorithm. But for now as we have not seen any of the algorithms in details, so we will go for vary 
+basic approach which is to loop over an array and match each element against given element. If the match is found then 
+print the appropriate message and terminate the loop else print failure message. Have a look at below code.
+
+SingleDimensionalArray.java
+```java
+package org.akhil;
+
+public class SingleDimensionalArray {
+    
+    public void searchElementInArray(int elementToSearch, int[] arr){
+        for(int i=0; i< arr.length; i++){
+            if(arr[i] == elementToSearch){
+                System.out.println("Element found at index "+i);
+                return;
+            }
+        }
+        System.out.println("Element not found in given array");
+    }
+}
+```
+
+Here we are looping over the given array and matching each array element to the given element to search. When the match is 
+found we are printing appropriate message and if no match is found after complete traversal of the array we are printing 
+failure message.
+
+To call this method from Main.java, we have written below code.
+
+Main.java
+```java
+package org.akhil;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {8,9,4,6,7,3,1,2,5};
+
+        SingleDimensionalArray sda = new SingleDimensionalArray();
+
+        sda.searchElementInArray(3, arr);
+    }
+}
+```
+
+Here we are trying to find element 3 in given array.
+The output of above code will be.
+
+```markdown
+Element found at index 5
+```
+
+Now to calculate the time and space complexity for this code, we know that we are looping over the array till we get the 
+matching element. In worst case scenario we might not get the matching element, so in that case we will be looping over 
+all the elements. We already know that the time complexity for such code is O(N) as number of iterations will increase as
+size of array increases. And for this searching we do not need any additional memory hence the space complexity will be 
+O(1).
+
