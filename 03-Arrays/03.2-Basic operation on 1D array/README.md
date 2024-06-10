@@ -16,7 +16,7 @@ c. Given array is of size 5 and only first three indices are occupied, but here 
 vacant and then add new element at index 0. This is also a time-consuming operation as we have to shift all the elements 
 in given array
 
-In general insertion in an array happens like below.
+In general insertion in an array happens like below. ([Code link](https://github.com/Akhil-Selukar/DSA-Prep/tree/master/03-Arrays/03.2-Basic%20operation%20on%201D%20array/Insertion%20of%20element%20in%201D%20array))
 
 Main.java
 ```java
@@ -113,3 +113,54 @@ Now id we try to calculate the complexity for insertion of an element in given a
 completely occupied array will be different.)
 
 ![Insertion of element in array(03-Arrays/03.2-Basic operation on 1D array/images/insertion of element in array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.2-Basic%20operation%20on%201D%20array/images/insertion%20of%20element%20in%20array.png)
+
+### 2. Accessing element - 
+We can access element of an array by using the index value. We have already seen how array elements are stored and fetched 
+based on index value from memory in [last section](https://github.com/Akhil-Selukar/DSA-Prep/tree/master/03-Arrays/03.1-Creation%20of%20an%20array).
+
+Now to access element based on index you can refer below code ([code link]())
+Here we are using the code written in insertion example. Below is the addition of code in main class for accessing element 
+based on index.
+
+Main.java
+```java
+package org.akhil;
+
+public class Main {
+    public static void main(String[] args) {
+        SingleDimensionalArray sda = new SingleDimensionalArray(5);
+
+        sda.insertElementAtIndex(0, 10);
+        sda.insertElementAtIndex(1, 20);
+        sda.insertElementAtIndex(2, 30);
+        sda.insertElementAtIndex(3, 40);
+        sda.insertElementAtIndex(4, 50);
+
+        // Accessing elements
+        int firstElement = sda.arr[0];
+        System.out.println("First element in the array is "+firstElement);
+        int fourthElement = sda.arr[3];
+        System.out.println("Fourth element in the array is "+fourthElement);
+
+    }
+}
+```
+
+Here we have first created an array of 5 elements, then added value for each and every index.
+Then by using index i.e. 0 and 3 we are fetching the value at 1st and 4th place and printing it.
+As mentioned earlier in section [creation of an array](https://github.com/Akhil-Selukar/DSA-Prep/tree/master/03-Arrays/03.1-Creation%20of%20an%20array)
+given index value will be added in the first memory location, and then the value at resultant memory location will be fetched.
+
+The time and space both complexity will be O(1) for this operation as we are not using any additional memory and irrespective
+of the index value (0 or N) we will execute the code only once for fetching value.
+
+The output of above code will be.
+```markdown
+Value inserted successfully.
+Value inserted successfully.
+Value inserted successfully.
+Value inserted successfully.
+Value inserted successfully.
+First element in the array is 10
+Fourth element in the array is 40
+```
