@@ -329,7 +329,7 @@ minimum value). The time and space complexity for above code is O(1). As we are 
 
 Finally, to summarize all the above operations we can have a look at below table.
 
-![Time and space complexity table for 1D array]()
+![Time and space complexity table for 1D array](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.2-Basic%20operation%20on%201D%20array/images/Time%20and%20space%20complexity%20for%201D%20array.png)
 
 Note : These complexities are based on the code we used on this repo, if you are using different way for the same operation 
 then complexity might be different.
