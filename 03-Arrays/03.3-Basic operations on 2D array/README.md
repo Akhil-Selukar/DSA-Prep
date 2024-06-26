@@ -76,3 +76,79 @@ Here the output will be an array of 3 rows and 3 columns like below.
 ```markdown
 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
+
+### 2. Insertion in a 2D array
+Here inserting an element means not initializing the array, here inserting means adding a value at given index of 2D array.
+As we know that index of 2D array always has 2 values i.e. row index and column index. Here the task for us is we will be 
+having a 2D array (as per general industry practice all the elements in the array will have value of minimum integer value.)
+We are given with index of row and column and a value to insert at given place (row and column). Let's have a look at code 
+for this task.
+
+`TwoDimensionArray.java`
+```java
+package org.akhil;
+
+public class TwoDimensionArray {
+    int[][] arr;
+    public TwoDimensionArray(int numberOfRows, int numberOfColumns) {
+        arr = new int[numberOfRows][numberOfColumns];
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[0].length; j++){
+                arr[i][j] = Integer.MIN_VALUE;
+            }
+        }
+    }
+
+    // Insert value at given index.
+    public void insertValueAtGivenIndex(int row, int col, int value){
+        try{
+            if(arr[row][col] == Integer.MIN_VALUE){
+                arr[row][col] = value;
+                System.out.println("Value inserted successfully..!!");
+            } else {
+                System.out.println("The cell at given index is already occupied.");
+            }
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Given array index are invalid");
+        }
+    }
+}
+```
+
+`main.java`
+```java
+package org.akhil;
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        TwoDimensionArray twoDimensionalArray = new TwoDimensionArray(3, 3);
+
+        twoDimensionalArray.insertValueAtGivenIndex(0,0,15);
+
+        System.out.println(Arrays.deepToString(twoDimensionalArray.arr));
+    }
+}
+```
+
+Here in class `TwoDimensionArray.java` we are using constructor to initialize an array of given number of rows and columns.
+And we are assigning initial value as Integer.MIN_VALUE to each cell.
+
+The method `insertValueAtGivenIndex(int row, int col, int value)` is the one we are interested in. Here we are accepting 
+row index, column index and the value to insert at that index, then we are checking if the cell at given index is occupied 
+or not and if not then we are inserting the given value at that cell.
+
+the output of above code is.
+
+```markdown
+Value inserted successfully..!!
+[[15, -2147483648, -2147483648], [-2147483648, -2147483648, -2147483648], [-2147483648, -2147483648, -2147483648]]
+```
+
+Here if we check the complexity of this method (insertion operation in 2D array) it will be like below.
+
+![Insertion in 2D array](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Insertion%20in%202D%20array.png)
+
+From above image we can clearly see that the insertion of an element at given index in 2D array has time complexity of 
+O(1), also as we are not using any extra variable for this operation hence the space complexity is also O(1).
