@@ -148,7 +148,69 @@ Value inserted successfully..!!
 
 Here if we check the complexity of this method (insertion operation in 2D array) it will be like below.
 
-![Insertion in 2D array](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Insertion%20in%202D%20array.png)
+![Insertion in 2D array(03-Arrays/03.3-Basic operations on 2D array/images/Insertion in 2D array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Insertion%20in%202D%20array.png)
 
 From above image we can clearly see that the insertion of an element at given index in 2D array has time complexity of 
 O(1), also as we are not using any extra variable for this operation hence the space complexity is also O(1).
+
+
+### Accessing element of a 2D array.
+Here the task is from an array we want to access and print the element at given row and column. Here we will be using 
+the code which we have already written in above part and add below method TwoDimensionArray.java to access element based 
+on given row and column.
+
+```java
+    // Access element at given row and column
+    public void accessElementAtGivenIndex(int row, int col){
+        System.out.println("Accessing element at "+row+"th row and "+col+"th column");
+        try{
+            System.out.println("Element at "+row+"th row and "+col+"th column is "+arr[row][col]);
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Given array indices are invalid");
+        }
+    }
+```
+
+Now before calling this method from main class let's add some mre values in the array.
+
+`main.java`
+```java
+package org.akhil;
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        TwoDimensionArray twoDimensionArray = new TwoDimensionArray(3,3);
+
+        twoDimensionArray.insertValueAtGivenIndex(0,0,1);
+        twoDimensionArray.insertValueAtGivenIndex(0,1,2);
+        twoDimensionArray.insertValueAtGivenIndex(1,1,5);
+
+        System.out.println(Arrays.deepToString(twoDimensionArray.arr));
+
+        twoDimensionArray.accessElementAtGivenIndex(1,1);
+    }
+}
+```
+
+Here first we initialized an array of 3 rows and 3 columns. Then we assigned values 1, 2 and 5 at specific indices. After 
+that we used the method `accessElementAtGivenIndex()` to access element at 1st row and 1st column. (i.e. element 5).
+
+Below will be the output of above code.
+
+```markdown
+Value inserted successfully..!!
+Value inserted successfully..!!
+Value inserted successfully..!!
+[[1, 2, -2147483648], [-2147483648, 5, -2147483648], [-2147483648, -2147483648, -2147483648]]
+Accessing element at 1th row and 1th column
+Element at 1th row and 1th column is 5
+```
+
+Now if we check the complexity for method to access element at given indices of a 2D array, it will be like below.
+
+![Accessing element of a 2D array(03-Arrays/03.3-Basic operations on 2D array/images/Accessing element of 2D array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Accessing%20element%20of%202D%20array.png)
+
+From above image we can clearly see that the time complexity of accessing element of a 2D array is O(1) also as no additional
+memory space is required hence the space complexity is also O(1).
