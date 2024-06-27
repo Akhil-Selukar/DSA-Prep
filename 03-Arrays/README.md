@@ -112,3 +112,14 @@ previous row.
 ![2d-array-in-memory-incorrect(03-Arrays/images/2D-array-in-memory-incorrect.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/images/2D-array-in-memory-incorrect.png)
 
 In case of 3D array, it will also be represented as multiple 2D arrays one after the other.
+
+
+### When we can use arrays in our program.
+
+#### Prefer array when :
+1. You have to store multiple values of same data type: Whenever we want to store multiple values of same datatype then instead of creating multiple variables we can simply create 1 array of that datatype. This will be easy to maintain.
+2. You want to access values randomly : As we know that all the array elements are stored in continuous memory locations, hence random access based on index value has O(1) time complexity.
+
+#### Avoid array when :
+1. You have to store values of different data type : array can not hold values of different datatype (in java at-least).
+2. Number of values to store can vary drastically : Let's say sometime you want to store only 3 elements but at a time you might have to store 300 elements. In such cases we should not use array as we have to define the size of array at the instantiation and if we specify small size then we will not be able to store the complete data and if we specify large size then we might leave some memory unused. In case of programmatically creating new larger array as and when required and then copping all values from previous small array to it and then add more values, this is a time-consuming operation and can slow down the application.  
