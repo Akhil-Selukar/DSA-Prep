@@ -284,3 +284,105 @@ From above image we can see that first loop will be executed for M times, where 
 For every iteration of row, the inner loop (for col) will be executed for N times, where N is the number of columns in each row.
 As for each iteration of M, inner loop will be iterating N times. Hence the time complexity for this overall operation will be 
 O(MN). Now as we are not using any extra memory location for this operation so the space complexity will be O(1).
+
+### 4. Searching element in 2D array.
+
+Here the problem statement is, you are given with a value, and you have to search that value in a 2D array. If the value 
+is present then print the indices of it and if value is not present then print the message "given value is not present in 
+array". For this there are many algorithms available, but as of now the approach we will use is to traverse the 2D array 
+and compare the value at each index with the given value (linear search). This is very similar to that of above (traversing 
+2D array). We just replace traverse2DArray() method with below `searchValueIn2DArray(int value)` method.
+
+```java
+public void searchValueIn2DArray(int value){
+    for(int row=0; row<arr.length; row++){
+        for(int col=0; col<arr.length; col++){
+            if(arr[row][col] == value){
+                System.out.println(value + " is present at row number "+row+" and column number "+col);
+                return;
+            }
+        }
+    }
+    System.out.println("Given value is not present in the array..!!");
+}
+```
+
+Here the method is exactly same as that of traversing, just instead of printing all the elements we are comparing the value 
+to given value. Here as well the time and space complexity will be same i.e. O(MN) and O(1) respectively.
+
+### Deleting(Updating) value at given index of 2D array.
+
+Deleting value at specific index from an array is nothing but setting it to the default value (in our case Integer.MIN_VALUE).
+This we can do by simply accessing the cell at given row and column index and setting it's value to default value. Have a 
+look at below code.
+
+`TwoDimensionArray.java`
+```java
+package org.akhil;
+
+public class TwoDimensionArray {
+    int[][] arr;
+
+    public TwoDimensionArray(int row, int col) {
+        arr = new int[row][col];
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[0].length; j++){
+                arr[i][j] = (i+1)*(j+1);
+            }
+        }
+    }
+
+    // Delete value at given index
+    public void deleteValueAtGivenIndex(int rowIndex, int columnIndex){
+        try{
+            arr[rowIndex][columnIndex] = Integer.MIN_VALUE;
+            System.out.println("Value at row "+rowIndex+" and column "+columnIndex+" is deleted successfully..!!");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Given array index are invalid..!!");
+        }
+    }
+}
+```
+
+`main.java`
+```java
+package org.akhil;
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        TwoDimensionArray twoDimensionArray = new TwoDimensionArray(3,3);
+
+        System.out.println("Array before deletion :");
+        System.out.println(Arrays.deepToString(twoDimensionArray.arr));
+
+        twoDimensionArray.deleteValueAtGivenIndex(1,1);
+
+        System.out.println("Array after deletion :");
+        System.out.println(Arrays.deepToString(twoDimensionArray.arr));
+    }
+}
+```
+
+Here in method `deleteValueAtGivenIndex(int rowIndex, int columnIndex)` we are simply accessing array element based on given
+indices and updating it's value with default value (i.e. Integer.MIN_VALUE). The output of above code will be.
+
+```markdown
+Array before deletion :
+[[1, 2, 3], [2, 4, 6], [3, 6, 9]]
+Value at row 1 and column 1 is deleted successfully..!!
+Array after deletion :
+[[1, 2, 3], [2, -2147483648, 6], [3, 6, 9]]
+```
+
+Here from above output we can clearly see that the value at index 1,1 is deleted (set to default value).
+
+If we calculate the complexity of this code, as it is a straight forward accessing an element of 2D array. The complexity 
+will be same as that of accessing element in 2D array which is O(1). Also, as no additional memory location is required
+the space complexity will also be O(1).
+
+
+So to summarize time and space complexities of operations on 2D array are as below.
+
+![Complexities of 2D array]()
