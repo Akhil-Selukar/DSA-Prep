@@ -214,3 +214,73 @@ Now if we check the complexity for method to access element at given indices of 
 
 From above image we can clearly see that the time complexity of accessing element of a 2D array is O(1) also as no additional
 memory space is required hence the space complexity is also O(1).
+
+### 3. Traversing 2D array.
+
+Traversing an array means visiting all elements of the array one by one. This is done by using index. In case of 2D
+arrays, as we have already seen that the array is stored in memory as an array of multiple single dimensional arrays. So 
+to traverse a 2D array we will be traversing multiple one dimensional arrays one by one. So we will need 2 for loops, one 
+to keep track of the array out of multiple one dimensional arrays and another to loop over all elements of that array.
+Have a look at below code.
+
+`TwoDimensionArray.java`
+```java
+package org.akhil;
+
+public class TwoDimensionArray {
+    int[][] arr;
+
+    public TwoDimensionArray(int row, int col) {
+        arr = new int[row][col];
+
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[0].length; j++){
+                arr[i][j] = (i+1)*(j+1);
+            }
+        }
+    }
+
+    // Traversal of 2D array
+    public void traverse2DArray(){
+        for(int row=0; row<arr.length; row++){
+            for(int col=0; col<arr[0].length; col++){
+                System.out.print(arr[row][col]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+`main.java`
+```java
+package org.akhil;
+
+public class Main {
+    public static void main(String[] args) {
+        TwoDimensionArray twoDimensionArray = new TwoDimensionArray(3,3);
+
+        twoDimensionArray.traverse2DArray();
+    }
+}
+```
+
+Here as well we are using same code as that of the previous one, just small change is, in constructor we have added logic 
+to initialize the array with some actual values instead of just Integer.MIN_VALUE. Then by using method `traverse2DArray()`
+we are iterating over the 2D array (By iterating over each row and inside that each element.) If we check the output of 
+above code we will see below matrix.
+
+```markdown
+1 2 3 
+2 4 6 
+3 6 9 
+```
+
+If we calculate the complexity of method for traversing the 2D array, it will be like below.
+
+![Iteration over 2D array(03-Arrays/03.3-Basic operations on 2D array/images/Iteration over 2D array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Iteration%20over%202D%20array.png)
+
+From above image we can see that first loop will be executed for M times, where M is the number of rows.
+For every iteration of row, the inner loop (for col) will be executed for N times, where N is the number of columns in each row.
+As for each iteration of M, inner loop will be iterating N times. Hence the time complexity for this overall operation will be 
+O(MN). Now as we are not using any extra memory location for this operation so the space complexity will be O(1).
