@@ -385,4 +385,4 @@ the space complexity will also be O(1).
 
 So to summarize time and space complexities of operations on 2D array are as below.
 
-![Complexities of 2D array]()
+![Complexities of 2D array(03-Arrays/03.3-Basic operations on 2D array/images/Complexities of 2D array.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/03-Arrays/03.3-Basic%20operations%20on%202D%20array/images/Complexities%20of%202D%20array.png)
