@@ -296,7 +296,7 @@ Now when we try to add new element in between. It shifts all the element after t
 new element.
 
 ![Arraylist insertion-2 (04-ArrayList/images/Arraylist inssertion-2.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-2.png)
-![Arraylist insertion-3 (04-ArrayList/images/Arraylist inssertion-3.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-2.png)
+![Arraylist insertion-3 (04-ArrayList/images/Arraylist inssertion-3.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-3.png)
 
 So if in the worst scenario we already have N elements in arraylist, and we want to add new element at the star i.e. index 0.
 In this scenario first all N elements will be shifted one place right then new element addition will be performed. So the
