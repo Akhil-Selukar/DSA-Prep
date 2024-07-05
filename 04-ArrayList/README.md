@@ -82,8 +82,8 @@ Here as soon as the line `ArrayList<String> list = new ArrayList<>();` is execut
 the variable 'list'. Have a look at below image.
 
 > <span>*</span> The initial capacity of 10 depends upon the version of java and implementation of arrayList in that version. In java 8
->as soon as we create an arraylist first an array of size 0 will be created (i.e. array declaration) but upon adding the 
->first element to the arraylist, an array of size 10 will be instantiated in memory.
+>as soon as we create an arraylist first an array of size 1 will be created, but upon adding the first element to the arraylist, 
+>an array of size 10 will be instantiated in memory.
 
 ![Arraylist in memory - 1 (04-ArrayList/images/Arraylist in memory - 1.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20in%20memory%20-%201.png)
 
@@ -170,3 +170,137 @@ Here after adding all the 11 elements we are removing 'C++'. So all the elements
 Here one thing to note is, even the array now came back to withing its original size, still it will not automatically shrink.
 We have to call '.trimToSize()' method. After calling this method the internal operations are taken care off by arrayList.
 
+Now as we know how arraylist works and how it is stored in memory, let's see some operations on arraylist and there time 
+and space complexity.
+
+### 1. Creation of an arraylist.
+
+We can create arraylist of two type, (typesafe arraylist and generic arraylist) in case of typesafe arraylist we can store 
+element of only specific type while in case of generic arraylist we can store element of any datatype.
+The syntax of creating and arraylist is as below.
+
+```markdown
+// typesafe arraylist
+ArrayList<String> list = new ArrayList<>();
+
+// generic arraylist
+ArrayList list = new ArrayList();
+```
+
+in both the cases, as we have already seen above it internally creates an array of default size (in some java versions it is 10
+while in some it is 1). In case of default size 10 it will create an element of size 10 and upon adding elements to the arrraylist
+it will add the elements in that array. While in case of default size of 1 it will create an array and as soon as we add 1st
+element it increases the size of the array to 10.
+
+Apart from default size we can also specify the initial size by passing the number while creating an arraylist
+
+```markdown
+// typesafe arraylist
+ArrayList<String> list = new ArrayList<>(18);
+
+// generic arraylist
+ArrayList list = new ArrayList(18);
+```
+
+Both the above syntax will create an internal array of initial size 18. 
+
+So the overall code of creation of an arraylist is like below
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        System.out.println(list);
+    }
+}
+```
+
+Above code will print `[]` i.e. an empty arraylist.
+
+If we evaluate the code for time and space complexity, as we are not iterating over anything neither our code depend upon 
+any of the input so the time complexity will be 'O(1)'. But the space complexity will depend upon the java version. If the 
+java version has default arraylist size as 1. Then the space complexity for creation of an arraylist will be O(1), But in 
+general we consider that we provide the size parameter while creating an arraylist so the size of initial arraylist will be
+the initial size we passed hence the space complexity will be considered as 'O(N)', where N is the initial size of arraylist.
+
+
+### 2. Insertion in arraylist
+
+We can add element in an arraylist by using `.add()` method. This method has two variations. One is with single argument 
+which will add the element at the end of the arraylist and second is with two arguments which will add the element (i.e. 
+second argument) at the given index (i.e. first argument). Now let's see both the variations one by one using actual code
+
+#### a. add() method with single parameter. 
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        
+        System.out.println(list);
+    }
+}
+```
+
+Here in above code we can see that we are using only 1 parameter with add method so when above code is executed, it will 
+first create an empty arraylist, and then it will add "java" first at index 0, then it will add "C" at index 1, and then 
+"C++" at index 2. So addition of element is at the end of the internal array which is being used by arraylist. This is very
+simple and will definitely have O(1) time and space complexity (as the array of default size is already created, and we are 
+not creating any additional array).
+
+But what if we have added 10 element and again trying to add 11th element. In this case the things will be different. First 
+it will create a new array of increased size, then it will copy all the elements and then add 11th element at the end. This
+for sure will not be the O(1) time complexity as a lot of internal work is being done, also we are increasing the space as well
+So in this case time and space complexity will be different from O(1). So in such scenarios the time and space complexity is 
+said to be **Amortized O(1)***. 
+
+> <span>*</span> Amortized time/space complexity is the way to express the time and space complexity of an algorithm when 
+> the algorithm has a very bad complexity once in a while for specific conditions, and has better time complexity otherwise.
+
+#### b. add() method with two parameters.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add(1, "Python");
+        
+        System.out.println(list);
+    }
+}
+```
+
+In above example first we are creating an arraylist and adding values "Java", "C" and "C++" normally.
+These values will be added at index 0, 1 and 2 respectively (of underlying array). Now when we add "Python" using `list.add(1, "Python");`
+it will add "Python" at index 1. But index 1 is already occupied by "C". So in this case before adding the new element 
+it will first shift all the elements from "C" 1 place right and make the index 1 empty. Then it will add the value "Python" 
+at index 1. Have a look at below image for better understanding.
+
+![Arraylist insertion-1 (04-ArrayList/images/Arraylist inssertion-1.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-1.png)
+
+Now when we try to add new element in between. It shifts all the element after that index one place right and make room for 
+new element.
+
+![Arraylist insertion-2 (04-ArrayList/images/Arraylist inssertion-2.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-2.png)
+![Arraylist insertion-3 (04-ArrayList/images/Arraylist inssertion-3.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20inssertion-2.png)
+
+So if in the worst scenario we already have N elements in arraylist, and we want to add new element at the star i.e. index 0.
+In this scenario first all N elements will be shifted one place right then new element addition will be performed. So the
+Time complexity will be O(N). And if we want to check the space complexity then in case of arraylist which is having element 
+less than it's capacity no extra space will be required so space complexity will be O(1), but as soon as it reaches to its
+capacity, additional capacity is added, and the space complexity will be definitely worst than O(1). So space complexity for
+insertion in arraylist using .add(index, value) method is amortized O(1).
