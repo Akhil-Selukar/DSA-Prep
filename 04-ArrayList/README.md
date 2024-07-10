@@ -430,3 +430,112 @@ public class Main {
 Above code will also generate the same output. Here as well the while loop will execute N number of time, where N is the 
 number of elements present in arraylist. Hence, the time complexity of this approach as well is O(N) while the space 
 complexity is O(1). 
+
+
+### 5. Search for an element in arraylist
+For searching any given element as well we have to loop over the arraylist and compare each element with the given element. 
+For this same purpose we already have an inbuilt method of arraylist which is `indexOf()`, this method returns the index of 
+first occurrence of given element. Below are the examples of both the approaches.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        for(String language:list){
+            if(language.equals("C++")){
+                System.out.println("C++ is present in arraylist.");
+                break;
+            }
+        }
+    }
+}
+```
+
+Here we are looping over the elements of given arraylist and checking each element against C++. If the element is C++ then 
+we are printing that C++ is present in arraylist and exiting the loop using break. Here in worst case it might be possible 
+that the element is not at all present in given array, in that case we will be looping over the entire arraylist. Hence the
+time complexity for this is O(N) while space complexity is O(1).
+
+The another approach is with indexOf() method.
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        int index = list.indexOf("C++");
+        System.out.println("C++ found at index "+index);
+    }
+}
+```
+
+Here in above code indexOf() method returns the index of first occurrence of 'C++'. And if 'C++' is not present in given 
+arraylist then it will return -1 as the index. Here as well the time and space complexity will be O(N) and O(1) respectively.
+
+### 6. Deleting an element from arraylist.
+
+Deleting any element from an arraylist can be done by using `remove()` method. We can pass either object or actual element 
+which we want to delete from the arraylist. Here the important thing to note that, whenever we delete any element form arraylist
+all the element to the right of deleted element are shifted one index left. Have a look at below diagram.
+
+![Deleting element in arraylist - 1(04-ArrayList/images/Arraylist deletion-1.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20deletion-1.png)
+
+Here in above image we have an array with some name of programming languages stored in it. We want to delete the name 'C'
+So the 'C' at index 2 will be removed from the arraylist as shown in below image.
+
+![Deleting element in arraylist - 2(04-ArrayList/images/Arraylist deletion-2.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20deletion-2.png)
+
+Now as the element at index 2 is removed so, instead of keeping that place empty all the elements right to the deleted 
+elements are shifted to 1 place left.
+
+![Deleting element in arraylist - 3(04-ArrayList/images/Arraylist deletion-3.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20deletion-3.png)
+
+In above image we can see that the at index 2 we have 'C++' now which was there at index 3 earlier.
+
+Let's have a look at the actual code for this.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        list.remove("C");
+        
+        System.out.println(list);
+    }
+}
+```
+
+the output of above code will be 
+```markdown
+["Java", "C++", "Python"]
+```
+
+Here as shifting of elements involved, and it might happen that we have to delete element at index 0, in that case all the 
+elements will be shifted to left. So the time complexity for this is considered as O(N) and space complexity is considered 
+as O(1).
+
+Overall the time and space complexities for different operations on arraylist are as below.
+
+![Time and space complexities for different operations(04-ArrayList/images/Arraylist time and space complixities.png)](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/04-ArrayList/images/Arraylist%20time%20and%20space%20complixities.png)
