@@ -304,3 +304,129 @@ Time complexity will be O(N). And if we want to check the space complexity then 
 less than it's capacity no extra space will be required so space complexity will be O(1), but as soon as it reaches to its
 capacity, additional capacity is added, and the space complexity will be definitely worst than O(1). So space complexity for
 insertion in arraylist using .add(index, value) method is amortized O(1).
+
+### 3. Accessing element of arraylist
+
+As we have seen that the Arraylist internally uses array data structure to store elements hence similar to array we can use
+index to access elements from an arraylist. The only difference is the syntax of accessing element based on index from arraylist
+is `list.get(index)` i.e. we use get method and pass index in the get method instead of directly using [] and passing index in 
+it. Have a look at below example.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        
+        System.out.println(list.get(1));
+    }
+}
+```
+
+In above example we are accessing the element at index 1, so it will give us 'C' as output.
+
+Here the time and space complexity for accessing element from an arraylist is O(1).
+
+### 4. Traversal of an arraylist
+Traversal means visiting each element of an arraylist. We can do this by using below 3 ways.
+<ul>
+<li>Using for loop</li>
+<li>Using foreach loop</li>
+<li>Using iterator</li>
+</ul>
+
+#### a. Using for loop.
+Iterating over an arraylist using for loop is just like iterating over an array we can run the for loop for size of arraylist minus 1
+times and access the elements based on index like below.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        for(int i=0; i<list.size(); i++){
+            System.out.println(list.get(i));
+        }
+    }
+}
+```
+
+The output of this code will be.
+```markdown
+Java
+C
+C++
+Python
+```
+
+Here as the execution of for loop is dependent on the size of arraylist hence the time complexity for this code will be O(N)
+while as we are not using any extra data structure hence the space complexity will be O(1).
+
+
+#### b. Using for each loop
+
+For each loop is very much similar to that of for loop, the difference is instead of using the counter and getting the element 
+based on index we are directly looping over the elements (or we can say arraylist).
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        for(String language:list){
+            System.out.println(language);
+        }
+    }
+}
+```
+
+Here as well the output will be same as the of previous. As the iteration of foreach loop depends on the number of elements
+present in the arraylist hence the time complexity for this code as well is O(N) while the space complexity is O(1).
+
+#### c. Using iterator
+An iterator is an interface in java which provides a way to iterate over collections like arraylist. We can use methods like 
+hasNext() and next() to iterate over an arraylist like below.
+
+```java
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        
+        list.add("Java");
+        list.add("C");
+        list.add("C++");
+        list.add("Python");
+        
+        Iterator<String> iterator = list.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+    }
+}
+```
+
+Above code will also generate the same output. Here as well the while loop will execute N number of time, where N is the 
+number of elements present in arraylist. Hence, the time complexity of this approach as well is O(N) while the space 
+complexity is O(1). 
