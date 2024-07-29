@@ -8,6 +8,7 @@ public class Main {
         int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
 
         System.out.println(spiralOrder(matrix));
+        System.out.println(spiralOrder2(matrix));
     }
 
     public static List<Integer> spiralOrder(int[][] matrix) {
@@ -43,6 +44,42 @@ public class Main {
                 }
                 left++;
             }
+        }
+        return ans;
+    }
+
+
+// ################ Another approach #################
+
+    public static List<Integer> spiralOrder2(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
+
+        int top = 0;
+        int bottom = row-1;
+        int left = 0;
+        int right = col-1;
+
+        while(ans.size() < row*col){
+
+            for(int i=left; i<=right && ans.size() < row*col; i++){
+                ans.add(matrix[top][i]);
+            }
+
+            for(int i=top+1; i<=bottom && ans.size() < row*col; i++){
+                ans.add(matrix[i][right]);
+            }
+
+            for(int i=right-1; i>=left && ans.size() < row*col; i--){
+                ans.add(matrix[bottom][i]);
+            }
+
+            for(int i=bottom-1; i>top && ans.size() < row*col; i--){
+                ans.add(matrix[i][left]);
+            }
+
+            top++; bottom--; left++; right--;
         }
         return ans;
     }
