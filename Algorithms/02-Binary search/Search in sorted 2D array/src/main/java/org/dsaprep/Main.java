@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
         // Here note that the matrix is sorted ascending row wise as well as column wise.
         int[][] matrix = {
-                {1,2,3,4},
-                {5,6,7,8},
-                {9,10,11,12}
+                {10,20,30,40},
+                {15,25,35,45},
+                {28,29,36,48}
             };
-        int target = 8;
+        int target = 35;
 
         System.out.println(Arrays.toString(search(matrix, target)));
     }
