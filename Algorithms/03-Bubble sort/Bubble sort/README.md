@@ -47,3 +47,18 @@ If we simplify this equation we will get<br>
 Now after removing constants and non-dominant terms we can conclude that the time complexity of bubble sort is O(N<sup>2</sup>)
 
 Here we are not using any extra space so space complexity will be constant i.e. O(1).
+
+> An important thing to note that bubble sort is a stable algorithm.  
+> That means if we have duplicates in the given array then the duplicates will be sorted but keeping their order intact.
+> To understand better consider an example of circular and square boxes with number on it, and you are using bubble sort algorithm
+> to sort the boxes based on the number on each box.
+> 
+> Given array of boxes is ([] represent square box while () represent circular box and number written inside is the number on that box.)<br>
+> [2], (1), [5], [3], (3), (5), [4]
+> 
+> After sorting the result will be <br>
+> (1), [2], [3], (3), [4], [5], (5)<br>
+> 
+> Here the thing to note is that in original given array square box of 3 is before circular box of 3, hence in sorted result
+> we can see square box of 3 before circular box of 3. Same is true for box with number 5 as well. That means in case of duplicate 
+> elements the algorithm maintain the original order, such algorithms are called stable algorithms.
