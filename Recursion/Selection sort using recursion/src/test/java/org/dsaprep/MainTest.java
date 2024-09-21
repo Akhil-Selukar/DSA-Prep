@@ -9,7 +9,7 @@ public class MainTest {
     public void testBsort_Test1(){
         int[] arr = {5,4,8,2,1,9,16,12,10,52,23,24,20};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
         assertEquals(2, arr[1]);
         assertEquals(4, arr[2]);
@@ -29,7 +29,7 @@ public class MainTest {
     public void testBsort_Test2(){
         int[] arr = {5,4,8,2,1};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
         assertEquals(2, arr[1]);
         assertEquals(4, arr[2]);
@@ -40,8 +40,7 @@ public class MainTest {
     @Test
     public void testBsort_Test3(){
         int[] arr = {1};
-
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
     }
 
@@ -49,7 +48,7 @@ public class MainTest {
     public void testBsort_Test4(){
         int[] arr = {1,2};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
         assertEquals(2, arr[1]);
     }
@@ -58,7 +57,7 @@ public class MainTest {
     public void testBsort_Test5(){
         int[] arr = {1};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
     }
 
@@ -66,7 +65,7 @@ public class MainTest {
     public void testBsort_Test6(){
         int[] arr = {2,1};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(1, arr[0]);
         assertEquals(2, arr[1]);
     }
@@ -75,7 +74,7 @@ public class MainTest {
     public void testBsort_Test7(){
         int[] arr = {1,-1};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(-1, arr[0]);
         assertEquals(1, arr[1]);
     }
@@ -84,7 +83,7 @@ public class MainTest {
     public void testBsort_Test8(){
         int[] arr = {1,-2};
 
-        Main.bSort(arr);
+        Main.selectionSort(arr);
         assertEquals(-2, arr[0]);
         assertEquals(1, arr[1]);
     }
