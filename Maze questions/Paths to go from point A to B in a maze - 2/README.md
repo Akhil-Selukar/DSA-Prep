@@ -1,7 +1,7 @@
 ### Paths to go from point A to point B in a maze.
 
 You are given a (N x N) matrix/maze, and you are standing in the top left corner of the matrix/maze (Point A). You can go one
-block right, one block down or one block diagonally (but not in backward direction.), there is no wat to go up or left. 
+block right, one block down or one block diagonally (but not in backward direction.), there is no way to go up or left. 
 Your task is to reach to the bottom right corner (Point B). Write a code to print all unique paths possible to reach from point A to point B.
 
 Example:
