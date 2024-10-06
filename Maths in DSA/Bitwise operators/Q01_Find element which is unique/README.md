@@ -4,8 +4,8 @@ You are given an array in which all elements are present two times except 1 elem
 which will find the element which is not repeated and return it.
 
 Ex:
-Input: nums = [2,4,6,3,1,3,4,2,1];
-Output: 6 (As all other elements are present twice in given array except 6)
+Input: nums = [2,4,6,3,1,3,4,2,1];<br>
+Output: 6 <br>(As all other elements are present twice in given array except 6)
 
 **Intuition** -<br>
 Here one way which all will think of is to run two loops and check each element if it is repeated or not. But here we will 
