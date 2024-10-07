@@ -22,3 +22,11 @@ public class Main {
         return num;
     }
 }
+
+// To calculate the complexity of above program. The iterations of loop depends upon the number of digits in binary form of given number.
+// we can simply calculate the number of digits in binary form of given decimal number by using formula (int)((lon(n)/log(2))+1)
+//
+// Actual formula is
+// Number of digits in base b = (int)((log(N)/log(b)) +1)
+//
+// Hence the numbre of times loop will run and N has logerathmic relation so the time complexity for above code is O(N) = log(N).
