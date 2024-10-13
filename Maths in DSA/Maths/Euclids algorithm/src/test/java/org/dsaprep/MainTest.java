@@ -11,6 +11,7 @@ public class MainTest {
         int b = 20;
 
         assertEquals(10, Main.euclidGcd(a,b));
+        assertEquals(20, Main.lcm(a,b));
     }
 
     @Test
@@ -19,6 +20,7 @@ public class MainTest {
         int b = 20;
 
         assertEquals(2, Main.euclidGcd(a,b));
+        assertEquals(20, Main.lcm(a,b));
     }
 
     @Test
@@ -27,6 +29,7 @@ public class MainTest {
         int b = 36;
 
         assertEquals(9, Main.euclidGcd(a,b));
+        assertEquals(36, Main.lcm(a,b));
     }
 
     @Test
@@ -35,6 +38,7 @@ public class MainTest {
         int b = 48;
 
         assertEquals(3, Main.euclidGcd(a,b));
+        assertEquals(144, Main.lcm(a,b));
     }
 
     @Test
@@ -43,6 +47,7 @@ public class MainTest {
         int b = 4;
 
         assertEquals(2, Main.euclidGcd(a,b));
+        assertEquals(4, Main.lcm(a,b));
     }
 
     @Test
@@ -51,6 +56,7 @@ public class MainTest {
         int b = 17;
 
         assertEquals(1, Main.euclidGcd(a,b));
+        assertEquals(187, Main.lcm(a,b));
     }
 
     @Test
@@ -59,6 +65,7 @@ public class MainTest {
         int b = 11;
 
         assertEquals(11, Main.euclidGcd(a,b));
+        assertEquals(11, Main.lcm(a,b));
     }
 
     @Test
@@ -67,5 +74,6 @@ public class MainTest {
         int b = 55;
 
         assertEquals(11, Main.euclidGcd(a,b));
+        assertEquals(110, Main.lcm(a,b));
     }
 }

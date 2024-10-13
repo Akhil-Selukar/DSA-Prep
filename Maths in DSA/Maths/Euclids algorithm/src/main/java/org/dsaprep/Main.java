@@ -2,10 +2,11 @@ package org.dsaprep;
 
 public class Main {
     public static void main(String[] args) {
-        int a = 20;
-        int b = 10;
+        int a = 33;
+        int b = 11;
 
-        System.out.println(euclidGcd(a,b));
+        System.out.println("HCF = "+ euclidGcd(a,b));
+        System.out.println("LCM = "+ lcm(a,b));
     }
 
     protected static int euclidGcd(int a, int b) {
@@ -13,5 +14,9 @@ public class Main {
             return b;
         }
         return euclidGcd(b%a, a);
+    }
+
+    protected static int lcm(int a, int b){
+        return (a*b)/euclidGcd(a,b);
     }
 }

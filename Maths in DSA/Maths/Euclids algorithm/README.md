@@ -13,3 +13,14 @@ i.e. GCD(a,b) = GCD(b%a, a)<br>
 
 Then we can apply same thing again and again till b%a becomes zero.
 
+### To calculate LCM
+
+**What is LCM?**<br>
+LCM (Least Common Multiple) of A and B is a lowest number which is divisable by both A and B.
+For example LCM of 3 and 4 is 12 because 12 is the smallest number which is completely divisable by both 3 and 4.
+
+Now the relationship between LCM and HFC/GCD is 
+
+LCM(a, b) = (a*b)/GCD(a,b)
+
+Same equation we can use to calculate LCM now.
