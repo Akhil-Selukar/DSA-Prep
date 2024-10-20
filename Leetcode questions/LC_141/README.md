@@ -46,3 +46,51 @@ public boolean hasCycle(ListNode head) {
         return false;
     }
 ```
+<hr>
+
+### Find length of the cycle
+The followup question to cycle detection can be to find the length of the cycle. For example consider below LinkedList 
+which has cycle in it.
+
+![Cycle detection-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Custom%20linkedlist/images/Cycle%20detection-1.jpg)
+
+In above image we can see that the cycle starts from 3rd element (i.e. 9) and it has total 5 elements in it.
+Hence, if we use above slow-fast pointer method, at some element in cycle both slow and fast pointer will meet and it will 
+confirm us the presence of cycle.<br>
+Let's assume that two pointer meet at element 4 as show in below image.
+
+![Cycle detection-2](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Custom%20linkedlist/images/Cycle%20detection-2.jpg)
+
+Now our task is to calculate the length of the cycle.<br>
+As we already know that the pointers will now keep on looping in the cycle as there is no tail with null value for this LinkedList.
+So we can keep fast pointer at the same place and move slow pointer till it reaches back to the fast pointer. At that instance 
+slow pointer must have visited all the elements in the cycle hence if we calculate the number of iterations slow pointer took
+to reach back to halted fast pointer, that number of iterations will be the count of nodes present in the cycle (i.e. length of cycle)
+
+![Cycle detection-3](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Custom%20linkedlist/images/Cycle%20detection-3.jpg)
+
+Below code will return the length of cycle.
+
+```java
+public int lengthOfCycle(ListNode head) {
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+
+        while(fastPointer != null && fastPointer.next != null){
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+
+            if(fastPointer == slowPointer){
+                // cycle present hence calculate the length here
+                int length = 0;
+                do{
+                    slowPointer = slowPointer.next;
+                    length++;
+                } while(slowPointer != fastPointer);
+                return length;
+            }
+        }
+
+        return 0;  // cycle not present hence length of cycle is 0
+    }
+```
