@@ -14,4 +14,4 @@ first removed from the stack.
 Internally stack is a class which extends vector class. Stack allows five operations which allow vector to be treated as 
 stack (push, pop, peek, empty, search). At it's core the elements are stored as array only.
 
-![Stack in real world]()
+![Stack in real world](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Custom%20stack/images/stack%20in%20real%20world.jpg)
