@@ -1,0 +1,15 @@
+package org.akhil;
+
+public class Main {
+    public static void main(String[] args) {
+
+        RecentCounter rc = new RecentCounter();
+
+        System.out.println(rc.ping(642));
+        System.out.println(rc.ping(1849));
+        System.out.println(rc.ping(4921));
+        System.out.println(rc.ping(5936));
+        System.out.println(rc.ping(5957));
+//        System.out.println(rc.ping(10000));
+    }
+}
