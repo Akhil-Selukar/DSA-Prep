@@ -100,4 +100,15 @@ the process till its possible. And that's it.
 ![Heap image-10](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Heap/images/Heap%20image-10.jpg)
 
 Here as well the time complexity will be O(log N). Hence, this is much more efficient than normal List/arrays when we are 
-dealing smallest, largest, etc type of conditions.
+dealing smallest, largest, etc. type of conditions.
+
+**Heapsort**
+
+From above explanation of removing element from heap we know that every time we remove first element we will get smallest/largest
+element. So heap sort is nothing but just keep on removing elements from heap and store them into an arrayList/linkedList
+you will have sorted elements. We know that the time complexity to remove an element from heap is O(log N) so removing N 
+element to get them sorted the time complexity will be O(N log N).
+
+
+> Heap and priority queue are exactly same. In maxHeap we give priority to the largest number and in minHeap we give 
+> priority to the smallest number first.
