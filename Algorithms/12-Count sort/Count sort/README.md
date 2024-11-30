@@ -39,5 +39,5 @@ At the end of above step the nums array will be completely sorted.
 > For time complexity, as we are iterating over two arrays of size N and M. Hence, time complexity will be O(N+M).
 
 
-> Here points to remember are this algorithm works well in case of small numbers and it is a stable algorithm.
+> Here points to remember are this algorithm works well in case of small numbers.
 > Disadvantages are it does not work well for decimal values and does not work well with large numbers.
