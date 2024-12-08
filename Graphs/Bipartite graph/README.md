@@ -3,7 +3,7 @@
 Any graph is said to be bipartite graph if we are able to colour that graph with two colours such that **no adjacent nodes 
 have the same colour.** Consider below images to distinguish between bipartite and non-bipartite graph.
 
-![Bipartite graph image-1]()
+![Bipartite graph image-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Graphs/images/Bipartite%20graph%20image-1.jpg)
 
 By observation of above image and definition of bipartite graphs we can conclude below important points.
 1. Linear graphs (graph without cycle) will always be bipartite.
