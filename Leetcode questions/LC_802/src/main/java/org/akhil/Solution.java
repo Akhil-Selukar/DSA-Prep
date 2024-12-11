@@ -1,7 +1,6 @@
 package org.akhil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
@@ -53,5 +52,60 @@ public class Solution {
         isInPath[i] = false;
         isSafe[i] = true;
         return false;
+    }
+
+    // Approach 2
+
+    public List<Integer> eventualSafeNodes2(int[][] graph) {
+        // conversion of graph to adjacency list
+        List<List<Integer>> adj = new ArrayList<>();
+
+        for(int i=0; i<graph.length; i++){
+            adj.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<graph.length; i++){
+            for(int j=0; j<graph[i].length; j++){
+                adj.get(i).add(graph[i][j]);
+            }
+        }
+
+        // reverse the direction and calculate inDegree
+        List<List<Integer>> reversedAdj = new ArrayList<>();
+        int[] inDegree = new int[adj.size()];
+
+        for(int i=0; i<adj.size(); i++){
+            reversedAdj.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<adj.size(); i++){
+            for(int val: adj.get(i)){
+                reversedAdj.get(val).add(i);
+                inDegree[i]++;
+            }
+        }
+
+        // initialize queue
+        Queue<Integer> queue = new LinkedList<>();
+        for(int i=0; i<inDegree.length; i++){
+            if(inDegree[i]==0){
+                queue.offer(i);
+            }
+        }
+
+        ArrayList<Integer> answer = new ArrayList<>();
+        while(!queue.isEmpty()){
+            int temp = queue.poll();
+            answer.add(temp);
+            for(int adjVal:reversedAdj.get(temp)){
+                inDegree[adjVal]--;
+                if(inDegree[adjVal] == 0){
+                    queue.offer(adjVal);
+                }
+            }
+        }
+
+        Collections.sort(answer);
+        return answer;
     }
 }

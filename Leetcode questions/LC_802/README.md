@@ -17,6 +17,7 @@ must be 0. No matter what in-degree is.)
 
 Now have a look at below graph.
 
+#### Approach 1
 ![LC-802 image-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-1.jpg)
 
 Here as per definition node 5 and 6 will become terminal nodes.<br>
@@ -51,3 +52,64 @@ Node 4 also has only 1 out-degree which land on node 5 which is a terminal node 
 Hence, all the nodes apart from nodes forming a cycle and nodes which has outgoing edge to any cycle node, will be safe nodes. 
 
 ![LC-802 image-3](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-3.jpg)
+
+
+#### Approach 2
+Here we can solve this problem using Kahn's algorithm as well.<br>
+If we observe the given problem statement and below graph, we can clearly see that node 5 and node 6 are the terminal nodes
+(because no outgoing edges). As there are no outgoing nodes hence they are safe nodes. 
+
+![LC-802 image-4](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-4.jpg)
+
+Now as per the definition of safe node we can say that all nodes which are directly connected to and pointing to terminal nodes
+are safe node. So indirectly the nodes which are contributing to the in-degree of terminal node are potential safe nodes 
+(Potential because there can be more outgoing edges from those nodes which might lead to a cycle and lands on itself.)<br>
+Now to confirm that the node is actually a safe node or not we need to ensure that the node for which we are checking should 
+not have any outgoing edge (or should not land on) any unsafe node.
+
+A node can be unsafe if it is not eventually landing on terminal node by all possible paths. For example in below graph node 
+0 is not safe node because even though it is landing on terminal node 5 via path `0->2->5`, but there exist another path 
+`0->1->3->0` which lands on itself. In case of node 7 even though node 7 has only one outgoing edge and nothing lands on 
+itself, but there exist a path `7->1->3->0->1` which forms a cycle hence 7 is also a not safe node.<br>
+So in general all nodes which are part of a cycle or somehow connected to cycle directly they can not be a safe node.
+
+![LC-802 image-5](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-5.jpg)
+
+Here after all above analysis the problem boils down to identify terminal node first. Then start from terminal node and 
+check all nodes which are landing on terminal nodes and ensure that they are not forming any cycle. If they satisfy this condition
+(not forming cycle and connected to terminal node) then they are safe node. Now from those safe node again check for other 
+nodes connected to the recently identified safe nodes and check the same thing, they must land on safe node (as per definition
+of safe node) and they should not form any cycle while traversing to safe/terminal node.
+
+Now cycle detection in directed graph can be easily identified using Kahn's algorithm. But the problem is we have to start 
+from terminal node and then identify safe nodes one by one. In Kahn's algorithm we start from the node whose inDegree is 0.
+But condition of terminal node given in question is that it's outDegree should be zero, and it can have any inDegree. Hence, 
+to apply Kahn's algorithm we need to revert the edges in given graph. So the modified graph will look like.
+
+![LC-802 image-6](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-6.jpg)
+
+Now to apply Kahn's algorithm here we first calculate inDegree of all nodes.
+
+![LC-802 image-7](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-7.jpg)
+
+Now next thing is we need to add all nodes with inDegree 0 in a queue and those will be for sure our answers. (Here as we 
+have reversed the degree hence all the noes with inDegree 0 are now representing the terminal nodes, hence will be in answer.)
+
+![LC-802 image-8](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-8.jpg)
+
+Now as per Kahn's algorithm next step is to take out elements from queue one by one and reduce the inDegree of connected 
+elements by 1. So first we will remove 5. Here 5 is connected to 2 and 4, so we will reduce the inDegree of 2 and 4 by 1.
+
+![LC-802 image-9](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-9.jpg)
+
+Here inDegree of 4 and 2 became 0 so we have to add them in queue. Next element to be removed from queue is 6. As 6 is not 
+connected to any other node hence we will not do anything with inDegree and just add 6 to the answer. Same with 4 as well, 
+and when we remove 2 from queue, now 2 is connected with 0 and 1 so we will reduce the inDegree of 0 and 1 and then check 
+them if the inDegree of any element became 0 or not. Here none of the element is with inDegree 0 now hence no addition in 
+queue.
+
+![LC-802 image-10](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_802/src/main/resources/images/LC_802%20image-10.jpg)
+
+Now as queue is empty so we will stop and we got our answer, all other nodes which are remaining will be somehow connected 
+to a cycle or itself is a part of a cycle.
+(Here if we want sorted order in answer we can sort it.)
