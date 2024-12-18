@@ -2,7 +2,8 @@
 
 Dijkstra's algorithm is one of the most important algorithm when it comes to find the shortest path between the nodes.
 It is important to note that it works on graphs with non-negative edge weights. This algorithm can be implemented in two 
-ways one is using priority queue and another is using set. (prefer set over priority queue as it is faster)
+ways one is using priority queue and another is using set. (As set is not by default sorted in java which are in C hence 
+implementing using set is difficult in java hence in case of java use priority queue only.)
 
 The algorithm is similar to that of BFS in graph the difference is we use priority queue in place of normal queue. <br>
 Have a look at below problem to understand the algorithm
@@ -64,3 +65,11 @@ Next element to polled out will be the remaining one {10, 5}. For this the itera
 
 Now no element is left in queue and queue is empty hence we can say that the distance array that we have is the required 
 answer which will have minimum distance of respective nodes from starting node.
+
+**Important :**
+
+Shortest path using BFS is also very similar to Dijkstra's algorithm (the only difference is in BFS we are using queue while
+in Dijkstra's algorithm we are using priorityQueue). Even though this is a very small difference still priorityQueue makes 
+a huge difference in number of iterations and time to calculate answer in case of complex graph. This is because in case of
+BFS we traverse each and every path and keep on adding minimum in dist. But in case of dijkstra's algorithm by fetching 
+minimum from queue we try to reduce the number of iterations and manipulations in dist array.  
