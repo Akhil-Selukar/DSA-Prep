@@ -109,3 +109,7 @@ Now consider after last edge we have one more edge (0, 1) in this case as per ab
 0 and 1 are same hence we can attach any of the two node under other one. After this operation the answer to the same question 
 is node 6 and 4 belong to the same component or not will now change (This is what is called dynamic graph that means graph 
 which is changing at each step), and hence the answer to the question can also change.
+
+> Disjoint set implementation using size is also almost similar to that of disjoint set using rank. The only difference is 
+> instead of rank we will use size and size will increase by actual value (i.e. no of nodes under the node which is getting
+> attached to new parent) instead of increasing by 1 in case of rank.
