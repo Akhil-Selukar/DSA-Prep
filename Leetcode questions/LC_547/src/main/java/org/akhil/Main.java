@@ -6,6 +6,8 @@ public class Main {
         addEdge(adj,1,2);
 
         System.out.println(findCircleNum(adj));
+        Solution2 sol = new Solution2();
+        System.out.println(sol.findCircleNum(adj));
     }
 
     private static void addEdge(int[][] adj, int i, int j) {
