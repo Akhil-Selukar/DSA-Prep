@@ -135,3 +135,13 @@ class Main {
     }
 }
 ```
+
+
+#### When to apply DP or how to identify DP problems.
+Whenever you are asked to find all possible ways to do something or whenever you want to find the best possible way (or 
+situation where you have to check all the possible ways to perform a task) There we can apply recursion and in recursion 
+if we are calculating same value again and again we can use DP. 
+
+Another important point is while solving the DP problem or recursion problem try to represent the problem in the form of 
+indexes. Then perform all possible operations on the index. Then sum of all the possible operations you did will be number
+of ways and min/max of it will be best and worst way.
