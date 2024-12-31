@@ -14,5 +14,6 @@ public class Main {
 
         Solution solution = new Solution();
         System.out.println(solution.minimumTotal(triangle));
+        System.out.println(solution.minimumTotal1(triangle));
     }
 }

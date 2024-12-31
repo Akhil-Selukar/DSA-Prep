@@ -49,4 +49,24 @@ public class Solution {
 
         return dp[i][j] = triangle.get(i).get(j) + Math.min(minTotalHelper(rows, i+1, j, triangle, dp), minTotalHelper(rows, i+1, j+1, triangle, dp));
     }
+
+    // Solution 3 - Tabulation (This will reduce the use of recursion stack.)
+    public int minimumTotal1(List<List<Integer>> triangle) {
+        int rows = triangle.size();
+        int[][] dp = new int[rows][rows];
+
+        // Base condition in tabulation
+        for(int j=0; j<rows; j++){
+            dp[rows-1][j] = triangle.get(rows-1).get(j);
+        }
+
+        // recurrence
+        for(int i=rows-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                dp[i][j] = Math.min(triangle.get(i).get(j)+dp[i+1][j], triangle.get(i).get(j)+dp[i+1][j+1]);
+            }
+        }
+
+        return dp[0][0];
+    }
 }
