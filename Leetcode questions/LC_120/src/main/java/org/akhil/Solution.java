@@ -35,9 +35,10 @@ public class Solution {
     }
 
     private int minTotalHelper(int rows, int i, int j, List<List<Integer>> triangle, int[][] dp) {
-        if(j <0 || j >= triangle.get(i).size()){
-            return (int)1e9;
-        }
+        // below condition will never occur
+//        if(j <0 || j >= triangle.get(i).size()){
+//            return (int)1e9;
+//        }
         if(i == rows-1){
             return triangle.get(i).get(j);
         }
