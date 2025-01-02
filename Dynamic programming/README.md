@@ -145,3 +145,5 @@ if we are calculating same value again and again we can use DP.
 Another important point is while solving the DP problem or recursion problem try to represent the problem in the form of 
 indexes. Then perform all possible operations on the index. Then sum of all the possible operations you did will be number
 of ways and min/max of it will be best and worst way.
+
+### 0-1 Knapsack 
