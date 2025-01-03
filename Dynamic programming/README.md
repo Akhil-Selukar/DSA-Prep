@@ -147,3 +147,26 @@ indexes. Then perform all possible operations on the index. Then sum of all the 
 of ways and min/max of it will be best and worst way.
 
 ### 0-1 Knapsack 
+Consider you are at gift shop and 3 gifts are placed in front of you. Each gift has some wright and price associated with it.
+Because you are a special customer, the shop owner gave you 100% discount on all 3 gifts.
+
+![0-1 Knapsack image-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/0-1%20knapsack%20image-1.jpg)
+
+You only have a plastic bag which can hold maximum of 6kg of weight and if you put anything more that 6kg, the bag will
+break. So you can only pick gifts which weigh maximum of 6kg.<br>
+
+Now here we have two options one is to pick the costliest iterm first (i.e. greedy approach) and another one is to think 
+smartly and pick items which will add up to the highest cost. In first approach the costliest gift is gift 3. This gift 
+will consume 5Kg of your bags capacity, and you are left with only 1kg left. As there is no gift of 1kg you can take gift 
+3 only which is nothing but 500 Rs discount. Now if you go with second approach and pick gift 1 first then the bag capacity 
+consumed will be 3 kg so you are still left with 3kg of capacity left and till now total discount is 300Rs. As a gift with
+2kg weight is available and your bag as well has capacity of 3kg remaining hence we can pick another 2kg gift as well. After 
+that the bag capacity consumed will be 5 and total discount will be 700Rs which is more than 1st case. Hence this second 
+approach is the better approach to pick the items for maximum profit.
+
+![0-1 knapsack image-2](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/0-1%20knapsack%20image-2.jpg)
+
+This above concept is nothing but 0-1 knapsack.
+
+> In all 0-1 knapsack problem you will be given with a weight array, a price array and maximum sack size. And you will 
+> be asked to take elements such that weight should not exceed the sack size and profit will be maximum. 
