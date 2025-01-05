@@ -1,6 +1,7 @@
 package org.akhil;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
 
@@ -27,12 +28,11 @@ public class Solution {
     // Solution 2 - Memoization
 
     public int findTargetSumWays(int[] nums, int target) {
-        int[] dp = new int[nums.length];
-        Arrays.fill(dp, (int)-1e9);
+        Map<String, Integer> dp = new HashMap<>();
         return helper(nums, target, nums.length-1, 0, dp);
     }
 
-    private int helper(int[] nums, int target, int i, int sum, int[] dp) {
+    private int helper(int[] nums, int target, int i, int sum, Map<String, Integer> dp) {
         if(i<0){
             if(sum == target){
                 return 1;
@@ -41,12 +41,14 @@ public class Solution {
             }
         }
 
-        if(dp[i] != -(int)1e9){
-            return dp[i];
+        String key=i+":"+sum;
+        if(dp.containsKey(key)){
+            return dp.get(key);
         }
 
         int subtract = helper(nums, target, i-1, sum-nums[i], dp);
         int add = helper(nums,  target, i-1,sum+nums[i], dp);
+        dp.put(key, add+subtract);
         return add+subtract;
     }
 }
