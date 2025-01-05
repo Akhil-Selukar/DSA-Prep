@@ -170,3 +170,12 @@ This above concept is nothing but 0-1 knapsack.
 
 > In all 0-1 knapsack problem you will be given with a weight array, a price array and maximum sack size. And you will 
 > be asked to take elements such that weight should not exceed the sack size and profit will be maximum. 
+
+
+### Unbounded knapsack
+
+Unbounded knapsack is just like 0-1 knapsack, the only difference is in 0-1 knapsack we are allowed to take any element 
+only once whereas in unbounded knapsack we can pick single element multiple times (i.e. there is an infinite supply of 
+elements.)
+
+Refer question [Unbounded knapsack]() for code.
