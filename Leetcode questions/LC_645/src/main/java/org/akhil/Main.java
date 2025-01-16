@@ -1,6 +1,8 @@
 package org.akhil;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +11,25 @@ public class Main {
         System.out.println(Arrays.toString(findErrorNums(nums)));
     }
 
+    // Bruteforce approach.
+
+//    public static int[] findErrorNums(int[] nums) {
+//        int n = nums.length;
+//        int sum = (n*(n+1)/2);
+//
+//        int incorrectSum = Arrays.stream(nums).sum();
+//        Set<Integer> set = new HashSet();
+//        for(int i=0; i<n; i++){
+//            if(set.contains(nums[i])){
+//                return new int[]{nums[i], nums[i]+(sum-incorrectSum)};
+//            } else {
+//                set.add(nums[i]);
+//            }
+//        }
+//        return new int[]{};
+//    }
+
+    // Optimized approach
     public static int[] findErrorNums(int[] nums) {
         int i=0;
         while(i < nums.length){
