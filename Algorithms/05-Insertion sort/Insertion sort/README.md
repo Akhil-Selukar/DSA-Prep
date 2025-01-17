@@ -3,7 +3,7 @@
 Note: If array has length less than 2 that means we have either empty array or array with 1 element, which is always sorted.
 
 The basic idea behind insertion sort is, we will start from index number 1. Then we insert that element to it's correct place in 
-left hand side array. So after every iteration the left hand side array to the current array will be sorted. (i.e. partial sorting)
+left hand side array. So after every iteration the left hand side of the current index will be sorted. (i.e. partial sorting)
 
 For example:
 consider given array is `[3,2,4,1]`.
