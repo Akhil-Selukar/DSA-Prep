@@ -26,6 +26,7 @@ public class CustomLinkedList {
         System.out.println();
     }
 
+    // O(N)/O(1)
     public void swapPairs() {
         if(this.head == null || this.head.next == null){
 //            return this.head;
