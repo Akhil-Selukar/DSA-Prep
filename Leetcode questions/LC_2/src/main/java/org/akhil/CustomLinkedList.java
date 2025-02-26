@@ -16,6 +16,7 @@ public class CustomLinkedList {
         this.tail = node;
     }
 
+    // O(N)/O(N) where N is max(size of list1, size of list2);
     public ListNode addTwoNumbers(ListNode headL1, ListNode headL2) {
         ListNode ansList = new ListNode(0);
         ListNode tail = ansList;

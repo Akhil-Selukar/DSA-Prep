@@ -26,7 +26,7 @@ public class CustomLinkedList {
         System.out.println();
     }
 
-    // Solution - 1====================
+    // Solution - 1==================== O(N)/O(1)
     public void removeNthFromEnd(int n) {
         int size = getSize(this.head);
         if(size == 1){
