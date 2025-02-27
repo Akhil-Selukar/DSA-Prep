@@ -84,3 +84,47 @@ public class CustomLinkedList {
         }
     }
 }
+
+
+// Better solution with O(N)/O(1)
+
+//    public ListNode reverseKGroup(ListNode head, int k) {
+//        if(head == null || k == 1 || head.next == null){
+//            return head;
+//        }
+//
+//        ListNode dummy = new ListNode(0);
+//        dummy.next = head;
+//        ListNode startNode = dummy;
+//        ListNode endNode = dummy.next;
+//        int i=1;                        // endNode is already starting from dummy.next i.e. actual head so 1 node is already considered.
+//        while(endNode != null){
+//            if(i%k == 0){
+//                startNode = reverse(startNode, endNode.next);
+//                endNode = startNode.next;
+//            } else {
+//                endNode = endNode.next;
+//            }
+//            i++;
+//        }
+//        return dummy.next;
+//    }
+//
+//    private ListNode reverse(ListNode start, ListNode end){
+//        ListNode prevNode = start;
+//        ListNode firstNode = start.next;
+//        ListNode currNode = start.next;
+//        ListNode nextNode;
+//
+//        while(currNode != end){
+//            nextNode = currNode.next;
+//            currNode.next = prevNode;
+//            prevNode = currNode;
+//            currNode = nextNode;
+//        }
+//
+//        start.next = prevNode;
+//        firstNode.next = currNode;
+//
+//        return firstNode;
+//    }
