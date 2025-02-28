@@ -26,6 +26,7 @@ public class CustomLinkedList {
         System.out.println();
     }
 
+    // O(N)/O(1)
     public void deleteDuplicates() {
         ListNode dummyNode = new ListNode(0, this.head);
         ListNode previousNode = dummyNode;

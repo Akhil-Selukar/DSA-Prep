@@ -37,6 +37,7 @@ public class CustomLinkedList {
         System.out.print("END");
     }
 
+    // O(N)/O(1)
     public void removeDuplicate(){
         ListNode temp = this.head;
         while(temp.next != null){
