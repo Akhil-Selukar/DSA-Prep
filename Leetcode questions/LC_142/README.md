@@ -75,6 +75,7 @@ Below is the actual code for this question.
  * }
  */
 public class Solution {
+    // O(N)/O(1)
     public ListNode detectCycle(ListNode head) {
         // step-1 check if cycle is present or not
         ListNode fastPointer = head;

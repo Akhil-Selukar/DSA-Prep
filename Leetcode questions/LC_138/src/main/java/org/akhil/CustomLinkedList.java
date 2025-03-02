@@ -5,6 +5,7 @@ public class CustomLinkedList {
     private Node head;
     private Node tail;
 
+    // O(N)/N(N)
     public Node copyRandomList(Node head) {
 
         Node currentNode = head;
