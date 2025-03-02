@@ -26,6 +26,7 @@ public class CustomLinkedList {
         System.out.print("END");
     }
 
+    // O(N)/O(1)
     public ListNode reverseBetween(int left, int right) {
         if(left == right){
             return this.head;
