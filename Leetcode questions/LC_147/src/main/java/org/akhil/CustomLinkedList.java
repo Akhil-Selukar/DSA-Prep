@@ -16,6 +16,8 @@ public class CustomLinkedList {
         this.tail = node;
     }
 
+
+    // O(N^2)/O(1)
     public void insertionSortList() {
         if( this.head == null ){
             return;
@@ -61,3 +63,24 @@ public class CustomLinkedList {
         }
     }
 }
+
+
+    // Another sorting (NOT INSERTON SORT) O(Nlog(N))/ O(N)
+//    public ListNode insertionSortList(ListNode head) {
+//        PriorityQueue<Integer> queue = new PriorityQueue<>();
+//        ListNode dummy = head;
+//        while(dummy != null){
+//            queue.offer(dummy.val);
+//            dummy = dummy.next;
+//        }
+//
+//        dummy = head;
+//        while(dummy != null){
+//            dummy.val = queue.poll();
+//            dummy = dummy.next;
+//        }
+//
+//        return head;
+//    }
+
+
