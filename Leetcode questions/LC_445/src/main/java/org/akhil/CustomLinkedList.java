@@ -26,6 +26,7 @@ public class CustomLinkedList {
         System.out.println();
     }
 
+    // Solution 1 - reversing the linkedList (O(Max(m,n))/O(1))
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
@@ -77,3 +78,36 @@ public class CustomLinkedList {
         }
     }
 }
+
+
+// Solution without reversing the LinkedLists (O(Max(m,n)/O(m+n)) m+n because of stack space.
+
+//public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//    Stack<Integer> stack1 = new Stack();
+//    Stack<Integer> stack2 = new Stack();
+//
+//    while(l1 != null){
+//        stack1.push(l1.val);
+//        l1 = l1.next;
+//    }
+//
+//    while(l2 != null){
+//        stack2.push(l2.val);
+//        l2 = l2.next;
+//    }
+//
+//    int carry = 0;
+//    ListNode temp = null;
+//
+//    while(!stack1.isEmpty() || !stack2.isEmpty() || carry > 0){
+//        int num1 = stack1.isEmpty()?0:stack1.pop();
+//        int num2 = stack2.isEmpty()?0:stack2.pop();
+//        int value = num1 + num2 + carry;
+//        ListNode newNode = new ListNode(value%10);
+//        newNode.next = temp;
+//        temp = newNode;
+//        carry = value/10;
+//    }
+//
+//    return temp;
+//}
