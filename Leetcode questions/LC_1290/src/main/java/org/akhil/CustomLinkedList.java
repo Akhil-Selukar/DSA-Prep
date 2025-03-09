@@ -24,6 +24,7 @@ public class CustomLinkedList {
         System.out.print("END");
     }
 
+    // Solution 1 - O(N)/O(1)
     public int getDecimalValue() {
         reverseList();
         ListNode temp = this.head;
@@ -61,3 +62,22 @@ public class CustomLinkedList {
         }
     }
 }
+
+// Solution 1 - Using stack O(N)/O(N) - Not that fast.
+//public int getDecimalValue(ListNode head) {
+//    Stack<Integer> stack = new Stack<>();
+//
+//    while(head != null){
+//        stack.push(head.val);
+//        head = head.next;
+//    }
+//
+//    int power = 0;
+//    int ans = 0;
+//    while(!stack.isEmpty()){
+//        ans = ans + (int)(stack.pop()*Math.pow(2, power));
+//        power++;
+//    }
+//
+//    return ans;
+//}
