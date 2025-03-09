@@ -26,6 +26,7 @@ public class CustomLinkedList {
         System.out.println();
     }
 
+    // O(N)/O(K)
     public ListNode[] splitListToParts(int k) {
 
         ListNode[] answer = new ListNode[k];
