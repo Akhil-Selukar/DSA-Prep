@@ -27,7 +27,7 @@ in segment tree. So what needed is to traverse through the segment tree and get 
 So the algorithm to calculate the answer will be<br>
 **Step 1** - Start from the root node and traverse the tree.  
 **Step 2** - There can be three cases at each node. Based on the case return the value (either actual or default. Here default value
-will depend on mathematical operation you are doing for example in case of addition/subtraction the default value will be 1
+will depend on mathematical operation you are doing for example in case of addition/subtraction the default value will be 0
 while in case of multiplication default value will be 1, in case of finding minimum in given range default can be Integer.MAX_VALUE, etc)
 
 **Case 1** - **Node interval** in segment tree is inside the query interval (i.e. in our example [4,5] interval in segment tree
