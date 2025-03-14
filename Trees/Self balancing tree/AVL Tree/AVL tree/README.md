@@ -2,7 +2,7 @@
 
 In 'binary search tree' we saw that the node with smaller value goes to the left side of parent node and node with greater 
 value goes to the right of the parent node, and in case of properly balanced tree with N nodes the height is 'log(N)' so 
-if we want to search any element then the time complexity will be O(og(N)) as we know that the all smaller elements are at 
+if we want to search any element then the time complexity will be O(log(N)) as we know that the all smaller elements are at 
 the LHS and all greater elements are at the RHS so we have to traverse only 1 path.
 
 But there is a problem here. Consider we are adding element in the binary search tree in sequence `2,4,5,6,8,9.13,17`. Now
