@@ -30,14 +30,27 @@ public class Main {
 // ############### Another approach (As array is sorted) ##############
 // As array is sorted, so we know that if the adjacent numbers are not same then there will not be any other duplicate of that number.
 
+//    public static int removeDuplicates2(int[] nums) {
+//        int uniqueCounter = 1;
+//        for(int i=1; i<nums.length; i++){
+//            if(nums[i] != nums[i-1]){
+//                nums[uniqueCounter] = nums[i];
+//                uniqueCounter++;
+//            }
+//        }
+//        return uniqueCounter;
+//    }
+
     public static int removeDuplicates2(int[] nums) {
-        int uniqueCounter = 1;
-        for(int i=1; i<nums.length; i++){
-            if(nums[i] != nums[i-1]){
-                nums[uniqueCounter] = nums[i];
-                uniqueCounter++;
+        int p1 = 0;
+        int p2 = 0;
+        while(p2 < nums.length){
+            if(nums[p1] != nums[p2]){
+                nums[++p1] = nums[p2++];
+            } else {
+                p2++;
             }
         }
-        return uniqueCounter;
+        return p1+1;
     }
 }
