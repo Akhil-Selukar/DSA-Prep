@@ -6,6 +6,6 @@ public class Main {
 
         Solution solution = new Solution();
         System.out.println(solution.eventualSafeNodes(graph));
-        System.out.println(solution.eventualSafeNodes2(graph));
+//        System.out.println(solution.eventualSafeNodes2(graph));
     }
 }
