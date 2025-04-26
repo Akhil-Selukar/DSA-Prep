@@ -113,7 +113,7 @@ public class Solution {
 
 
     // Solution 3 - same approach that of 1st solution but without converting matrix to adj list (which reduce considerable amount of time)
-
+    // O(V+E)/O(V)
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int n = graph.length;
 
