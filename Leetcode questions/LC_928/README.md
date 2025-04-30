@@ -1,0 +1,12 @@
+### 928 - Minimize Malware Spread II
+
+**Question link** - [Link](https://leetcode.com/problems/minimize-malware-spread-ii/description/)
+
+**Topics** - Graph, disjoint set, connected components
+
+**Interview tips** -
+In question on leetcode the constraints are given, but before starting this question one can ask below questions to the interviewer
+to determine edge cases.
+1.
+
+**Intuition** -
