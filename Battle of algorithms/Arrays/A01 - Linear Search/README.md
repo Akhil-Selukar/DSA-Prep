@@ -3,7 +3,7 @@
 > [!Note]<br>
 > **Use** - to search element in array<br>
 > **Implementation** - iteration over array using simple for loop<br>
-> **Time complexity** - O(N)
+> **Time complexity** - O(N)<br>
 > **Space complexity** - O(1)
 > 
 
