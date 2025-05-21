@@ -3,13 +3,19 @@
 Binary Search is an <ins>efficient algorithm for finding a **target value** within a **sorted array or list**</ins>. 
 Unlike linear search, which checks every element, binary search repeatedly divides the search interval in half.
 
-> [!NOTE] <br>
+> [!NOTE]<br>
 > **Use** - to search element in array<br>
 > **Prerequisites** - given array or list must be sorted.<br>
 > **Implementation** - iteration over array using simple for loop<br>
 > **Time complexity** - O(log N)<br>
 > **Space complexity** - O(1)
-
+> <br>
+> <br>
+> Types of Binary search
+>   1. Simple binary search (ascending or descending array or list)
+>   2. Order agnostic binary search (array or list is sorted but order is unknown)
+>   3. Rotated binary search
+>   4. Binary search in 2D array
 ---
 
 ## Use of the Algorithm
