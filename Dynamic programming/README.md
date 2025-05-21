@@ -1,7 +1,7 @@
 ### Dynamic programming
 
 Dynamic programming is one of the most important part of programming. It is a problem-solving technique that break down 
-the complex problem into smaller and more manageable sub-problems and storing teh result of those sub-problems so that 
+the complex problem into smaller and more manageable sub-problems and storing the result of those sub-problems so that 
 they don't need to be recalculated. It saves a lot of computation time and problem can be solved faster.
 
 To understand this better consider a very basic problem where we have to calculate and return the 5th fibonacci number. 
@@ -30,8 +30,8 @@ If we try to understand the flow of above program in more details, then below wi
 ![DP image-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/DP%20image-01.jpg)
 
 As all the recursive calls ae executed from left to right so first f(5) will call f(4) which then call f(3) which further 
-calls f(2) and the f(1) so the recursive call for f(4) will follow below order to calculate f(4). Which will make the 
-time complexity of above code as O(N<sup>2</sup>)
+calls f(2) and then f(1) so the recursive call for f(4) will follow below order to calculate f(4). Which will make the 
+time complexity of above code as O(2<sup>N</sup>) (as we have 2 choices at every step).
 
 ![DP image-2](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/DP%20image-02.jpg)
 
@@ -41,7 +41,7 @@ twice, once for calculating f(3) and other one is for actual f(2) while calculat
 Also while calculating RHS of f(5) we will again have to calculate f(3) and for that we will again need f(2). So there 
 are many repetitions involved in this recursive tree. Consider what if this calculation involve some complex logic in that 
 case repeating the same logic again and again will not make any sense. If we have calculated a value before and we know 
-that it will not change then we can reuse this same value. This is what dynamic programming does.<br>
+that it will not change then we can reuse the same value. This is what dynamic programming does.<br>
 
 There are two techniques to do this, 
 1. Memoization (Some people call it as memorization)
@@ -77,7 +77,7 @@ class Main {
 }
 ```
 
-Here in teh recursive calls will be reduced and the recursion tree will be simplified like below.
+Here the recursive calls will be reduced and the recursion tree will be simplified like below.
 
 ![DP image-3](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/DP%20image-03.jpg)
 
@@ -152,8 +152,8 @@ Because you are a special customer, the shop owner gave you 100% discount on all
 
 ![0-1 Knapsack image-1](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Dynamic%20programming/images/0-1%20knapsack%20image-1.jpg)
 
-You only have a plastic bag which can hold maximum of 6kg of weight and if you put anything more that 6kg, the bag will
-break. So you can only pick gifts which weigh maximum of 6kg.<br>
+You only have a plastic bag which can hold maximum 6kg of weight and if you put anything more that 6kg, the bag will
+break. So you can only pick gifts which weigh maximum upto 6kg.<br>
 
 Now here we have two options one is to pick the costliest iterm first (i.e. greedy approach) and another one is to think 
 smartly and pick items which will add up to the highest cost. In first approach the costliest gift is gift 3. This gift 
