@@ -76,25 +76,51 @@ public class Solution {
 //        return adj;
 //    }
 
+//--------------------------------------------
 
-    // Solution 2
+    // Solution 2 - only 1 BFS on each tree.
     // O(N + M)
     // O(N + M)
-    static class Pair {
-        int first;
-        int second;
-        Pair(int first, int second) {
-            this.first = first;
-            this.second = second;
+
+    public int[] maxTargetNodes(int[][] edges1, int[][] edges2) {
+        // build adjacency lists
+        int n = edges1.length + 1;
+        int m = edges2.length + 1;
+        
+        List<List<Integer>> adj1 = generateTree(edges1);
+        List<List<Integer>> adj2 = generateTree(edges2);
+
+        // Step-1: Find the best you can do by adding the extra edge in tree-2
+        // Here as we are considering alternate rows hence from every node the count will be same for all odd level and even leve nodes (it's just that based on node selected it will be interchanged i.e. odd count can be even for some other node and even can be odd)
+        // Hence only 1 iteration will be enough to find the max count.
+        int evenCountT2 = bfs(0, adj2, null);            // count of even-level nodes
+        int oddCountT2 = m - evenCountT2;                // the rest are odd-level
+        int bestT2 = Math.max(evenCountT2, oddCountT2);
+
+        // Step-2: Run BFS on tree-1, and record nodes on even levels
+        // Same logic goes here as well hence we can find the counts just by 1 iteration of BFS
+        boolean[] atEvenLevel = new boolean[n];             // to keep track of nodes which are at even level.
+        int evenCountT1 = bfs(0, adj1, atEvenLevel);
+
+        // Step-3: For each i, if i was even-level in tree-1 we connect it to tree-2's best even-level
+        int[] ans = new int[n];
+        for (int i = 0; i < n; ++i) {
+            if (atEvenLevel[i]) {
+                // it contributes even_count1 from tree-1 plus best2 from tree-2
+                ans[i] = evenCountT1 + bestT2;
+            } else {
+                // it would be odd in tree-1, so you get (n-evenCountT1) + bestT2
+                ans[i] = (n - evenCountT1) + bestT2;         // if node is not at even level then required count will be (n-evenCountT1) + bestT2
+            }
         }
+        return ans;
     }
 
-    // A single BFS that:
-    // 1) returns the number of nodes on even-numbered levels, and
-    // 2) if `included` is non-null, marks exactly those nodes at even levels
-    private int bfs(int start, List<List<Integer>> adj, boolean[] included) {
-        Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(start, -1));
+    private int bfs(int node, List<List<Integer>> adj, boolean[] atEvenLevel) {
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] visited = new boolean[adj.size()];
+        q.add(node);
+        visited[node] = true;
         int count = 0;
         int level = 0;
 
@@ -104,67 +130,38 @@ public class Solution {
             if (level % 2 == 0)
                 count += size;
 
-            while (size-- > 0) {
-                Pair currPair = q.poll();
-                int curr = currPair.first;
-                int parent = currPair.second;
-                if (included != null && level % 2 == 0) {
-                    // mark this node as "included"
-                    included[curr] = true;
+            while (size > 0) {
+                int curr = q.poll();
+
+                if (atEvenLevel != null && level % 2 == 0) {
+                    // mark this node as "atEvenLevel"
+                    atEvenLevel[curr] = true;
                 }
-                for (int v : adj.get(curr)) {
-                    if (v == parent) continue;
-                    q.add(new Pair(v, curr));
+                for (int neighbour : adj.get(curr)) {
+                    if (!visited[neighbour]) {
+                        q.add(neighbour);
+                        visited[neighbour] = true;
+                    }
                 }
+                size--;
             }
             ++level;
         }
         return count;
     }
 
-    public int[] maxTargetNodes(int[][] edges1, int[][] edges2) {
-        // build adjacency lists
-        int n1 = edges1.length + 1;
-        int n2 = edges2.length + 1;
-        List<List<Integer>> adj1 = new ArrayList<>();
-        List<List<Integer>> adj2 = new ArrayList<>();
+    private List<List<Integer>> generateTree(int[][] edges) {
+        List<List<Integer>> adj = new ArrayList<>();
 
-        for (int i = 0; i <= n1; i++) {
-            adj1.add(new ArrayList<>());
-        }
-        for (int i = 0; i <= n2; i++) {
-            adj2.add(new ArrayList<>());
+        for (int i = 0; i < edges.length + 1; i++) {
+            adj.add(new ArrayList<>());
         }
 
-        for (int[] edge : edges1) {
-            adj1.get(edge[0]).add(edge[1]);
-            adj1.get(edge[1]).add(edge[0]);
-        }
-        for (int[] edge : edges2) {
-            adj2.get(edge[0]).add(edge[1]);
-            adj2.get(edge[1]).add(edge[0]);
+        for (int[] edge : edges) {
+            adj.get(edge[0]).add(edge[1]);
+            adj.get(edge[1]).add(edge[0]);
         }
 
-        // Step-1: Find the best you can do by adding the extra edge in tree-2
-        int even_count2 = bfs(0, adj2, null);            // count of even-level nodes
-        int odd_count2 = n2 - even_count2;                // the rest are odd-level
-        int best2 = Math.max(even_count2, odd_count2);
-
-        // Step-2: Run BFS on tree-1, and record nodes on even levels
-        boolean[] included = new boolean[n1];
-        int even_count1 = bfs(0, adj1, included);
-
-        // Step-3: For each i, if i was even-level in tree-1 we connect it to tree-2's best even-level
-        int[] ans = new int[n1];
-        for (int i = 0; i < n1; ++i) {
-            if (included[i]) {
-                // it contributes even_count1 from tree-1 plus best2 from tree-2
-                ans[i] = even_count1 + best2;
-            } else {
-                // it would be odd in tree-1, so you get (n1-even_count1) + best2
-                ans[i] = (n1 - even_count1) + best2;
-            }
-        }
-        return ans;
+        return adj;
     }
 }
