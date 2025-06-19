@@ -6,6 +6,12 @@ import java.util.List;
 
 public class Solution {
     // Solution 1
+    // O(N^2)/O(N)
+    // space complexity O(NlogN) for sorting plus outer loop is O(N-2) ~ O(N) and inner while loop while(j<k) iterates N times
+    // because either j increment or k decrement and both meet at a point so at worst case when there are no duplicates it iterates N times.
+    // Hence O(N) for outer for loop * O(N) for inner while loop will become O(N^2).
+    // Hence total time complexity will be O(NlogN + N^2) where dominant term is N^2 hence O(N^2)
+
     public List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length;
         List<List<Integer>> ans = new ArrayList<>();
