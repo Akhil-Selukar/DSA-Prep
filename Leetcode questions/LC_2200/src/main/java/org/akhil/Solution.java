@@ -32,4 +32,24 @@ public class Solution {
 //    }
 
 
+    // Solution 2 - Two pointers
+    // O(N)/O(N)
+    public List<Integer> findKDistantIndices(int[] nums, int key, int k) {
+
+        List<Integer> answer = new ArrayList<>();
+        int left = 0;
+
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] == key){
+                left = Math.max(left, i-k);
+                int right = Math.min(nums.length-1, i+k);
+
+                for(int j=left; j<=right; j++){
+                    answer.add(j);
+                }
+                left = right+1;
+            }
+        }
+        return answer;
+    }
 }

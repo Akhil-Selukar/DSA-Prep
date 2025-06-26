@@ -2,7 +2,7 @@
 
 **Question link** - [Link](https://leetcode.com/problems/find-all-k-distant-indices-in-an-array/description/)
 
-**Topics** - Queue/Stack or sorting
+**Topics** - sorting or two pointer
 
 **Interview tips** -
 In question on leetcode the constraints are given, but before starting this question one can ask below questions to the interviewer
