@@ -5,7 +5,8 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
         int[] heights = {2, 1, 5, 6, 2, 3};
-
+        Solution solution = new Solution();
+        System.out.println(solution.largestRectangleArea(heights));
         System.out.println(largestRectangleArea(heights));
     }
 
