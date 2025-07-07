@@ -24,49 +24,71 @@ public class Solution {
 //    }
 
     // Solution 2 - Memoization
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int rows = triangle.size();
-        int[][] dp = new int[rows][rows];
-        for(int[] arr:dp){
-            Arrays.fill(arr, (int)-1e9);
-        }
-
-        return minTotalHelper(rows, 0, 0, triangle, dp);
-    }
-
-    private int minTotalHelper(int rows, int i, int j, List<List<Integer>> triangle, int[][] dp) {
-        // below condition will never occur
-//        if(j <0 || j >= triangle.get(i).size()){
-//            return (int)1e9;
+//    public int minimumTotal(List<List<Integer>> triangle) {
+//        int rows = triangle.size();
+//        int[][] dp = new int[rows][rows];
+//        for(int[] arr:dp){
+//            Arrays.fill(arr, (int)-1e9);
 //        }
-        if(i == rows-1){
-            return triangle.get(i).get(j);
-        }
-
-        if(dp[i][j] != (int)-1e9){
-            return dp[i][j];
-        }
-
-        return dp[i][j] = triangle.get(i).get(j) + Math.min(minTotalHelper(rows, i+1, j, triangle, dp), minTotalHelper(rows, i+1, j+1, triangle, dp));
-    }
+//
+//        return minTotalHelper(rows, 0, 0, triangle, dp);
+//    }
+//
+//    private int minTotalHelper(int rows, int i, int j, List<List<Integer>> triangle, int[][] dp) {
+//        // below condition will never occur
+////        if(j <0 || j >= triangle.get(i).size()){
+////            return (int)1e9;
+////        }
+//        if(i == rows-1){
+//            return triangle.get(i).get(j);
+//        }
+//
+//        if(dp[i][j] != (int)-1e9){
+//            return dp[i][j];
+//        }
+//
+//        return dp[i][j] = triangle.get(i).get(j) + Math.min(minTotalHelper(rows, i+1, j, triangle, dp), minTotalHelper(rows, i+1, j+1, triangle, dp));
+//    }
 
     // Solution 3 - Tabulation (This will reduce the use of recursion stack.)
-    public int minimumTotal1(List<List<Integer>> triangle) {
-        int rows = triangle.size();
-        int[][] dp = new int[rows][rows];
+//    public int minimumTotal1(List<List<Integer>> triangle) {
+//        int rows = triangle.size();
+//        int[][] dp = new int[rows][rows];
+//
+//        // Base condition in tabulation
+//        for(int j=0; j<rows; j++){
+//            dp[rows-1][j] = triangle.get(rows-1).get(j);
+//        }
+//
+//        // recurrence
+//        for(int i=rows-2; i>=0; i--){
+//            for(int j=i; j>=0; j--){
+//                dp[i][j] = Math.min(triangle.get(i).get(j)+dp[i+1][j], triangle.get(i).get(j)+dp[i+1][j+1]);
+//            }
+//        }
+//
+//        return dp[0][0];
+//    }
 
-        // Base condition in tabulation
-        for(int j=0; j<rows; j++){
-            dp[rows-1][j] = triangle.get(rows-1).get(j);
+
+    // Solution 4 - (solution for followup question)
+    // O(N^2)/O(N)
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] dp = new int[n];
+
+        // copy last row to dp
+        for(int i=0; i<n; i++){
+            dp[i] = triangle.get(n-1).get(i);
         }
 
-        // recurrence
-        for(int i=rows-2; i>=0; i--){
-            for(int j=i; j>=0; j--){
-                dp[i][j] = Math.min(triangle.get(i).get(j)+dp[i+1][j], triangle.get(i).get(j)+dp[i+1][j+1]);
+        // process each row from bottom-up
+        for(int row = n-2; row>=0; row--){
+            for(int col=0; col<=row; col++){
+                dp[col] = triangle.get(row).get(col) + Math.min(dp[col], dp[col+1]);
             }
         }
 
-        return dp[0][0];
+        return dp[0];
     }
 }
