@@ -97,8 +97,39 @@ public class Solution {
 //        return dp[0][0][2];
 //    }
 
+    // Solution 4 - Best to start with in interview (will give TLE)
+    // post this solution implement next (solution 5) as optimization
+    // O(N^2)/O(1)
+//    public int maxProfit(int[] prices) {
+//        int n = prices.length;
+//        int maxProfit = 0;
+//        for(int i=1; i<n; i++){       // i till n because it says AT MOST 2 trades i.e. only 1 trade is also allowed
+//            int firstTrade = getMaxProfit(prices, 0, i);
+//            int secondTrade = 0;
+//            if(i+1<n){       // to prevent out of bounds for second trade (in case we are just making 1 trade and selling at last or last but 1 day.
+//                secondTrade = getMaxProfit(prices, i+1, n-1);
+//            }
+//
+//            maxProfit = Math.max(maxProfit, firstTrade + secondTrade);
+//        }
+//
+//        return maxProfit;
+//    }
+//
+//    private int getMaxProfit(int[] prices, int start, int end){
+//        int max = 0;
+//        int minVal = prices[start];
+//
+//        for(int i=start+1; i<=end; i++){
+//            max = Math.max(max, prices[i]-minVal);
+//            minVal = Math.min(minVal, prices[i]);
+//        }
+//
+//        return max;
+//    }
 
-    // Approach 4 - Divide and conquer
+
+    // Approach 5 - Divide and conquer
     /**
      * Here as it is given that we are not allowed to engage in multiple transactions at the same time, hence there will not be any overlap between transactions/
      * Which means for both the transactions there will be a breaking point (i.e. a point which separate first transaction and second transaction)
