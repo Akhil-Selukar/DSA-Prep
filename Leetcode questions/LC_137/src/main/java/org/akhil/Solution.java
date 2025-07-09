@@ -5,17 +5,38 @@ import java.util.Arrays;
 public class Solution {
 
     // solution 1
+//    public int singleNumber(int[] nums) {
+//        int ans = 0;
+//        for (int i = 0; i < 32; ++i) {
+//            int sum = 0;
+//            for (final int num : nums) {
+//                sum += num >> i & 1;
+//            }
+//            sum %= 3;
+//            ans = ans | sum << i;
+//        }
+//        return ans;
+//    }
+
+    // More intuitive and clean implementation of above approach
     public int singleNumber(int[] nums) {
-        int ans = 0;
-        for (int i = 0; i < 32; ++i) {
-            int sum = 0;
-            for (final int num : nums) {
-                sum += num >> i & 1;
+        int result = 0;
+
+        for(int i=0; i<=31; i++){
+            int bitIndex = 1 << i;
+            int countOfOne = 0;
+
+            for(int num:nums){
+                if((num & bitIndex) != 0){
+                    countOfOne++;
+                }
             }
-            sum %= 3;
-            ans = ans | sum << i;
+
+            if(countOfOne % 3 == 1){
+                result = (result | bitIndex);        // set bitIndex bit of result
+            }
         }
-        return ans;
+        return result;
     }
 
     /*
