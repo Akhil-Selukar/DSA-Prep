@@ -92,8 +92,41 @@ public class Solution {
 //        return dp[0][0][k];
 //    }
 
+    //------------------------------------
+    // Solution 4 - using memoization of 2D array
+    // O(N*K)/O(N*K)
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
 
-    // Solution 4 - State transition algorithm/method
+        int[][] dp = new int[n+1][(2*k)+1];
+
+        for(int[] row:dp){
+            Arrays.fill(row, -1);
+        }
+
+        return helper(0, 0, prices, k, dp);
+    }
+
+    private int helper(int index, int transactionNo, int[] prices, int k, int[][] dp){
+        // base case
+        if(index >= prices.length || transactionNo >= 2*k){
+            return 0;
+        }
+
+        if(dp[index][transactionNo] != -1){
+            return dp[index][transactionNo];
+        }
+
+        // if transaction number is odd then it has to be a sell transaction or skip transaction.
+        if(transactionNo % 2 != 0){
+            return dp[index][transactionNo] = Math.max(prices[index] + helper(index+1, transactionNo+1, prices, k, dp), helper(index+1, transactionNo, prices, k, dp));
+        } else {    // has to be buy or skip transaction
+            return dp[index][transactionNo] = Math.max(-prices[index] + helper(index+1, transactionNo+1, prices, k, dp), helper(index+1, transactionNo, prices, k, dp));
+        }
+    }
+
+    //-------------------------------------
+    // Solution 5 - State transition algorithm/method
     /**
      * As we are allowed k transactions and each transaction involves 2 operations (buy and sell) hence total operations we have to perform are 2k.
      * Now to perform 2k operations we have n days available. So there can be 3 cases.
@@ -134,49 +167,49 @@ public class Solution {
      */
 
     // O(N*K)/O(K)
-    public int maxProfit(int k, int[] prices) {
-        int n = prices.length;
-
-        // case 1
-        if(n <= 1){
-            return 0;
-        }
-
-        // case 2
-        if(2*k >= n){
-            int maxProfit = 0;
-            for(int i=1; i<n; i++){
-                if(prices[i] > prices[i-1]){
-                    maxProfit = maxProfit + (prices[i] - prices[i-1]);
-                }
-            }
-            return maxProfit;
-        }
-
-        // case 3
-        int[] states = new int[2*k];
-
-        // initializing dp array (states)
-        for(int i=0; i<2*k; i++){
-            if(i%2 == 0){
-                states[i] = Integer.MIN_VALUE;
-            } else {
-                states[i] = 0;
-            }
-        }
-
-        for(int i=0; i<n; i++){             // iterate over price
-            for(int j=0; j<2*k; j++){       // for ith price calculate all states
-                if(j==0){
-                    states[j] = Math.max(states[j], -prices[i]);
-                } else if(j%2 == 1){       // sell operation
-                    states[j] = Math.max(states[j], states[j-1]+prices[i]);
-                } else {       // buy operation (i.e. j%2 == 0)
-                    states[j] = Math.max(states[j], states[j-1]-prices[i]);
-                }
-            }
-        }
-
-        return states[(2*k)-1];
-    }
+//    public int maxProfit(int k, int[] prices) {
+//        int n = prices.length;
+//
+//        // case 1
+//        if(n <= 1){
+//            return 0;
+//        }
+//
+//        // case 2
+//        if(2*k >= n){
+//            int maxProfit = 0;
+//            for(int i=1; i<n; i++){
+//                if(prices[i] > prices[i-1]){
+//                    maxProfit = maxProfit + (prices[i] - prices[i-1]);
+//                }
+//            }
+//            return maxProfit;
+//        }
+//
+//        // case 3
+//        int[] states = new int[2*k];
+//
+//        // initializing dp array (states)
+//        for(int i=0; i<2*k; i++){
+//            if(i%2 == 0){
+//                states[i] = Integer.MIN_VALUE;
+//            } else {
+//                states[i] = 0;
+//            }
+//        }
+//
+//        for(int i=0; i<n; i++){             // iterate over price
+//            for(int j=0; j<2*k; j++){       // for ith price calculate all states
+//                if(j==0){
+//                    states[j] = Math.max(states[j], -prices[i]);
+//                } else if(j%2 == 1){       // sell operation
+//                    states[j] = Math.max(states[j], states[j-1]+prices[i]);
+//                } else {       // buy operation (i.e. j%2 == 0)
+//                    states[j] = Math.max(states[j], states[j-1]-prices[i]);
+//                }
+//            }
+//        }
+//
+//        return states[(2*k)-1];
+//    }
 }
