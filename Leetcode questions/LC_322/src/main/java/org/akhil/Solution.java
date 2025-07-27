@@ -89,33 +89,53 @@ public class Solution {
 //    }
 
     // Solution 4 - Memory optimized
+//    public int coinChange(int[] coins, int amount) {
+//        int[] previous = new int[amount+1];
+//
+//        // initialize the base condition (i.e. when index will be 0 and target amount can be anything in that case using coin at 0th index are we able to achieve target.)
+//        for(int amt = 0; amt<=amount; amt++){
+//            if(amt % coins[0] == 0){
+//                previous[amt] = amt/coins[0];
+//            }else {
+//                previous[amt] = (int)1e9;
+//            }
+//        }
+//
+//        int[] current = new int[amount+1];
+//        for(int i=1; i<coins.length; i++){
+//            for(int amt = 0; amt<=amount; amt++){
+//                int take = (int)1e9;
+//                if(amt >= coins[i]){
+//                    take = 1 + current[amt-coins[i]];
+//                }
+//                int notTake = previous[amt];
+//
+//                current[amt] = Math.min(take, notTake);
+//            }
+//            previous = current;
+//        }
+//
+//        int res = previous[amount];
+//        return res >= (int)1e9 ? -1 : res;
+//    }
+
+
+    // Solution 5 - Memory optimized (simple solution)
+
     public int coinChange(int[] coins, int amount) {
-        int[] previous = new int[amount+1];
+        int[] dp = new int[amount+1];
 
-        // initialize the base condition (i.e. when index will be 0 and target amount can be anything in that case using coin at 0th index are we able to achieve target.)
-        for(int amt = 0; amt<=amount; amt++){
-            if(amt % coins[0] == 0){
-                previous[amt] = amt/coins[0];
-            }else {
-                previous[amt] = (int)1e9;
-            }
-        }
+        Arrays.fill(dp, (int)1e9);      // Initially we assume it is not possible to create the amount even with infinite coins
+        dp[0] = 0;          // 0 amount can be created using 0 coins
 
-        int[] current = new int[amount+1];
-        for(int i=1; i<coins.length; i++){
-            for(int amt = 0; amt<=amount; amt++){
-                int take = (int)1e9;
-                if(amt >= coins[i]){
-                    take = 1 + current[amt-coins[i]];
+        for(int amt=1; amt<=amount; amt++){
+            for(int coin:coins){
+                if(amt-coin >= 0){      // if we can take the coin
+                    dp[amt] = Math.min(dp[amt], 1 + dp[amt-coin]);      // minimum of earlier value or 1 + coins required for remaining amount
                 }
-                int notTake = previous[amt];
-
-                current[amt] = Math.min(take, notTake);
             }
-            previous = current;
         }
 
-        int res = previous[amount];
-        return res >= (int)1e9 ? -1 : res;
+        return dp[amount] == (int)1e9 ? -1 : dp[amount];
     }
 }

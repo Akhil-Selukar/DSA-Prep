@@ -34,3 +34,10 @@ coin again and again.
 > This is the most important point here, whenever in case of recursion we have infinite supply of element which we can 
 > either take or not take. In that case move to next element only in case of not take. In case of take, check that same 
 > element one more time for new/reduced target.
+
+#### Another approach (Optimized)
+
+Here we can try creating each amount starting from 1 till given amount using each coin like below. 
+(amount 0 will always require 0 coins so we can directly put 0 for amount 0).
+
+![LC-322 image](https://github.com/Akhil-Selukar/DSA-Prep/blob/master/Leetcode%20questions/LC_322/src/main/resources/images/LC-322%20image_01.jpg)
