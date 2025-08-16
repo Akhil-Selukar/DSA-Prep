@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Trie {
+
+    // works but not accepted in interview.
     private List<String> list;
     public Trie() {
         list = new ArrayList<>();
