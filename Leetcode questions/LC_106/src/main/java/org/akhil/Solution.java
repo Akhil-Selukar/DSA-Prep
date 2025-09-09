@@ -40,34 +40,34 @@ public class Solution {
 
 
     // Solution 1.1 - O(N)/O(N) - Slight change in index finding but improve time a lot.
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        int inStart = 0;
-        int inEnd = inorder.length-1;
-        int postStart = 0;
-        int postEnd = postorder.length-1;
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for(int i=0; i<inorder.length; i++){
-            map.put(inorder[i], i);
-        }
-        return buildHelper(inorder, inStart, inEnd, postorder, postStart, postEnd, map);
-    }
-
-    private TreeNode buildHelper(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd, Map<Integer, Integer> map){
-        if(inStart > inEnd || postStart > postEnd){
-            return null;
-        }
-
-        int nodeVal = postorder[postEnd];
-        int nodeIndex = map.get(nodeVal);
-
-        TreeNode node = new TreeNode(nodeVal);
-
-        node.left = buildHelper(inorder, inStart, nodeIndex-1, postorder, postStart, postStart+nodeIndex-inStart-1, map);
-        node.right = buildHelper(inorder, nodeIndex+1, inorder.length-1, postorder, postStart+nodeIndex-inStart, postEnd-1, map);
-
-        return node;
-    }
+//    public TreeNode buildTree(int[] inorder, int[] postorder) {
+//        int inStart = 0;
+//        int inEnd = inorder.length-1;
+//        int postStart = 0;
+//        int postEnd = postorder.length-1;
+//        Map<Integer, Integer> map = new HashMap<>();
+//
+//        for(int i=0; i<inorder.length; i++){
+//            map.put(inorder[i], i);
+//        }
+//        return buildHelper(inorder, inStart, inEnd, postorder, postStart, postEnd, map);
+//    }
+//
+//    private TreeNode buildHelper(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd, Map<Integer, Integer> map){
+//        if(inStart > inEnd || postStart > postEnd){
+//            return null;
+//        }
+//
+//        int nodeVal = postorder[postEnd];
+//        int nodeIndex = map.get(nodeVal);
+//
+//        TreeNode node = new TreeNode(nodeVal);
+//
+//        node.left = buildHelper(inorder, inStart, nodeIndex-1, postorder, postStart, postStart+nodeIndex-inStart-1, map);
+//        node.right = buildHelper(inorder, nodeIndex+1, inorder.length-1, postorder, postStart+nodeIndex-inStart, postEnd-1, map);
+//
+//        return node;
+//    }
 
     // Same solution as that of above but a bit simple (in terms of finding the range)
     /**
@@ -93,4 +93,33 @@ public class Solution {
      *     }
      */
 
+
+    // Solution 3 - More intuitive and easy to understand.
+    // O(N)/O(N)
+    Map<Integer, Integer> map = new HashMap<>();
+    int postorderIndex = 0;
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        postorderIndex = postorder.length-1;
+
+        for(int i=0; i<inorder.length; i++){
+            map.put(inorder[i], i);
+        }
+
+        return buildHelper(postorder, 0, inorder.length-1);
+    }
+
+    private TreeNode buildHelper(int[] postorder, int inorderStart, int inorderEnd){
+        if(inorderStart > inorderEnd){
+            return null;
+        }
+
+        int rootVal = postorder[postorderIndex--];
+        int indexOfRoot = map.get(rootVal);
+        TreeNode root = new TreeNode(rootVal);
+
+        root.right = buildHelper(postorder, indexOfRoot+1, inorderEnd);
+        root.left = buildHelper(postorder, inorderStart, indexOfRoot-1);
+
+        return root;
+    }
 }
