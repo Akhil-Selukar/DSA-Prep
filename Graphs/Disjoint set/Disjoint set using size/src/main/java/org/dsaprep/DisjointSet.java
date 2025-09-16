@@ -32,7 +32,7 @@ public class DisjointSet {
             return;
         }
 
-        if(ultParentV < ultParentU){
+        if(size.get(ultParentV) < size.get(ultParentU)){
             parent.set(ultParentV, ultParentU);
             size.set(ultParentU, size.get(ultParentU) + size.get(ultParentV));
         } else {
