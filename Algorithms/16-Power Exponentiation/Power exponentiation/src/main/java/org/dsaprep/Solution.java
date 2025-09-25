@@ -15,7 +15,7 @@ public class Solution {
 
     private double helper(double base, long exp) {
         if(exp == 0){
-            return (base<0) ? -1 : 1;
+            return 1.0;
         }
 
         double result = 1.0;
