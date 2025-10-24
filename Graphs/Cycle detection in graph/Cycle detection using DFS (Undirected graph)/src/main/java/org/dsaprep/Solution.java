@@ -22,7 +22,9 @@ public class Solution {
         visited[value] = true;
         for(int adjValue:adj.get(value)){
             if(!visited[adjValue]){
-                return helperDFS(adj, visited, adjValue, value);
+                if(helperDFS(adj, visited, adjValue, value)){
+                    return true;
+                }
             } else if(adjValue != parent){
                 return true;
             }
