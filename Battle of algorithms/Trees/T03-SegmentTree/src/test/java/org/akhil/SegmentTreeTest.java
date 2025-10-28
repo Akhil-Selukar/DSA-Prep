@@ -78,9 +78,9 @@ class SegmentTreeTest {
         // Querying an index out of bounds (0..2)
         // If the query is [0, 3], it should ideally throw an exception, but your implementation might run into a NullPointerException
         // or unexpected behavior. Since the input array is length 3, valid range is [0, 2].
-        assertThrows(NullPointerException.class, () -> st.query(0, 3), "Invalid query range [0, 3] should fail (NPE/Error expected).");
+        assertThrows(IllegalArgumentException.class, () -> st.query(0, 3), "Invalid query range [0, 3] should fail (NPE/Error expected).");
 
         // Test update outside bounds (Assuming similar failure)
-        assertThrows(NullPointerException.class, () -> st.update(3, 100), "Invalid update index 3 should fail (NPE/Error expected).");
+        assertThrows(IllegalArgumentException.class, () -> st.update(3, 100), "Invalid update index 3 should fail (NPE/Error expected).");
     }
 }

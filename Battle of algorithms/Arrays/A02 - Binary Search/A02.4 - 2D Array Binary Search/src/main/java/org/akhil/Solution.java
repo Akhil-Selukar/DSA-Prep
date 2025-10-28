@@ -17,5 +17,24 @@ public class Solution {
 
     public int[] binarySearch(int[][] arr, int target){
         // Write your code here
+        if(arr == null || arr.length == 0){
+            return new int[]{-1, -1};
+        }
+
+        int row = 0;
+        int col = arr[0].length-1;
+
+        while(row < arr.length && col >=0){
+            if(arr[row][col] == target){
+                return new int[]{row, col};
+            }
+
+            if(arr[row][col] < target){
+                row++;
+            } else {
+                col--;
+            }
+        }
+        return new int[]{-1, -1};
     }
 }

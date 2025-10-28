@@ -13,12 +13,11 @@ public class Solution {
      * @return Math.pow(a,b)
      */
     public double power(int a, int b){
-        // write your code here
-        long exp = (long)b;     // in case of exponent is Integer.MIN_VALUE because converting this to +ve will go out of range
+        long exp = (long)b;
 
-        if(exp < 0){        // handle -ve exponent
+        if(exp < 0){
+            exp = -1 * exp;
             a = 1/a;
-            exp = -1*exp;
         }
 
         return helper(a, exp);
@@ -32,11 +31,11 @@ public class Solution {
         double result = 1.0;
 
         while(exp >= 1){
-            if(exp%2 == 1){                // odd exponent
+            if(exp%2 == 1){
                 result = result * base;
             }
 
-            base = base*base;
+            base = base * base;
             exp = exp/2;
         }
 

@@ -14,6 +14,7 @@ public class Solution {
         }
 
         boolean[] visited = new boolean[adj.size()];
+
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(startVertex);
         visited[startVertex] = true;

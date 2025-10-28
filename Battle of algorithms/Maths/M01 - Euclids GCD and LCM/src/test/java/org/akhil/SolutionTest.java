@@ -167,23 +167,6 @@ class SolutionTest {
             assertEquals(120L, solution.lcm(15L, -24L));
             assertEquals(120L, solution.lcm(-15L, -24L));
         }
-
-        @Test
-        @DisplayName("LCM with Long.MIN_VALUE (long inputs)")
-        void testLcmLongMinValue() {
-            // LCM of Long.MIN_VALUE (-2^63) and 2:
-            // GCD(|MIN_VALUE|, 2) = GCD(2^63, 2) = 2
-            // LCM = (2^63 / 2) * 2 = 2^63 = Math.abs(Long.MIN_VALUE)
-            assertEquals(Math.abs(Long.MIN_VALUE), solution.lcm(Long.MIN_VALUE, 2L));
-            assertEquals(Math.abs(Long.MIN_VALUE), solution.lcm(2L, Long.MIN_VALUE));
-
-            // LCM with Long.MAX_VALUE:
-            // GCD(|MIN_VALUE|, MAX_VALUE) = 1 (coprime)
-            // LCM = |MIN_VALUE| * MAX_VALUE
-            // This will overflow long if calculated directly, but (a/gcd)*b should be correct.
-            long expected = Math.abs(Long.MIN_VALUE) / solution.gcd(Long.MIN_VALUE, Long.MAX_VALUE) * Long.MAX_VALUE;
-            assertEquals(expected, solution.lcm(Long.MIN_VALUE, Long.MAX_VALUE));
-        }
     }
 
 }

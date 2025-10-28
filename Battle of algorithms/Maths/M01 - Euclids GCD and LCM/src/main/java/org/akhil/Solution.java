@@ -21,7 +21,8 @@ public class Solution {
         if (a == 0) {
             return b;
         }
-        return gcd(b % a, a);
+
+        return gcd(b%a, a);
     }
 
     public long lcm(long a, long b) {
@@ -29,9 +30,9 @@ public class Solution {
         a = Math.abs(a);
         b = Math.abs(b);
         long gcd = gcd(a, b);
-        if (gcd == 0) {
+        if(gcd == 0){
             return 0;
         }
-        return (a * b) / gcd;
+        return (a*b)/gcd;
     }
 }

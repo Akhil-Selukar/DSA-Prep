@@ -1,2 +1,11 @@
-package org.akhil;public class Pair {
+package org.akhil;
+
+public class Pair {
+    int node;
+    int dist;
+
+    public Pair(int node, int dist){
+        this.node = node;
+        this.dist = dist;
+    }
 }

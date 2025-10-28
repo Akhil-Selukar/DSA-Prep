@@ -15,5 +15,20 @@ public class Solution {
 
     public void cyclicSort(int[] arr){
         // write your code here
+        if(arr == null || arr.length == 0){
+            return;
+        }
+
+        int i=0;
+        while(i<arr.length){
+            int correctIndex = arr[i]-1;
+            if(correctIndex != i){
+                int temp = arr[correctIndex];
+                arr[correctIndex] = arr[i];
+                arr[i] = temp;
+            } else {
+                i++;
+            }
+        }
     }
 }
