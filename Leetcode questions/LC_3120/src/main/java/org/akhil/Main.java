@@ -2,6 +2,9 @@ package org.akhil;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        String word = "aaAbcBCDe";
+
+        Solution solution = new Solution();
+        System.out.println(solution.numberOfSpecialChars(word));
     }
 }
